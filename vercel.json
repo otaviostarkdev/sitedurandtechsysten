@@ -1,1 +1,18 @@
-{"cleanUrls":true,"rewrites":[{"source":"/(.*)","destination":"/index.html"}]}
+{
+  "version": 2,
+  "public": true,
+  "github": {
+    "silent": true
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

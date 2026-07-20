@@ -1,0 +1,8 @@
+{
+  "name": "durand-tech-system",
+  "version": "1.0.0",
+  "description": "Durand Tech System - Sites e sistemas que vendem",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'"
+  }
+}
