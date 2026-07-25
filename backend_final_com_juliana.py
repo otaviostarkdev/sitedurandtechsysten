@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
-PIX = "00895672006"
+PIX = "durandtechsysten@gmail.com"
 NUMERO = "(53) 99707-3648"
 SITE = "https://www.durandtechsysten.com.br"
 JULIANA_ZAP = "https://wa.me/5548998290105?text=Oi%20Juliana!%20Maquininha%20Ton%200,74%25"
