@@ -59,7 +59,7 @@ h1 span{ color:var(--neon) }
 <body>
 <div class="header">
 <div class="logo"><div class="logo-icon">DT</div><div class="logo-text"><b>DURAND TECH</b><span>DESENVOLVIMENTO</span></div></div>
-<div class="header-right"><div class="pill">(53) 99707-3648</div><div class="pill">PIX durandtechsysten@gmail.com</div></div>
+<div class="header-right"><a href="index.html" style="background:var(--neon);color:#000;padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:800;font-size:12px">← Voltar ao Site</a><div class="pill">(53) 99707-3648</div><div class="pill">PIX durandtechsysten@gmail.com</div></div>
 </div>
 <div class="progress-line"><div class="progress-fill" id="progress"></div></div>
 
@@ -96,6 +96,18 @@ const steps = [
 ];
 let data = {};
 let current = 0;
+
+// --- INTEGRAÇÃO INDEX + WIDGET: aceita ?tipo=xxx ---
+(function(){
+  try{
+    const params = new URLSearchParams(window.location.search);
+    const tipo = params.get('tipo');
+    if(tipo){ data['projeto'] = tipo; }
+    const projetoNome = params.get('projeto');
+    if(projetoNome){ data['projeto'] = projetoNome; }
+  }catch(e){}
+})();
+
 
 function render(){
 const step = steps[current];

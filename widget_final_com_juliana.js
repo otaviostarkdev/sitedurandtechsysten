@@ -1,10 +1,15 @@
+// Durand Tech Systen - Widget Chat Juliana v3 - Orçamento em nova página
+window.abrirOrcamentoNovaPagina = function(tipo=''){
+  const url = tipo ? 'orcamento.html?tipo=' + encodeURIComponent(tipo) : 'orcamento.html';
+  window.open(url, '_blank', 'noopener,noreferrer');
+};
 
-// Durand Tech Systen - Widget Chat Juliana v3 - Só Chat
 const CONFIG = {
   API: "https://durand-bot-backend.onrender.com",
   WHATSAPP_JULIANA: "5548998290105",
   WHATSAPP_VENDAS: "5553997073648",
-  SITE_URL: "https://durandtechsysten.com.br"
+  SITE_URL: "https://durandtechsysten.com.br",
+  ORCAMENTO_URL: "orcamento.html"
 };
 
 (function(){
@@ -30,7 +35,7 @@ const CONFIG = {
   win.id = 'durand-chat-window';
   win.innerHTML = `
     <div id="durand-chat-header"><span><b>Durand Tech</b> • Juliana (IA)</span><span id="durand-chat-close" style="cursor:pointer">✕</span></div>
-    <div id="durand-chat-messages"><div class="msg bot">Olá! Sou a Juliana, IA da Durand Tech Systen. Como posso te ajudar com seu projeto hoje? 🚀<br><br><a href="/orcamento.html" target="_blank" style="color:#4f46e5; font-weight:700">📋 Clique aqui para fazer um Orçamento</a></div></div>
+    <div id="durand-chat-messages"><div class="msg bot">Olá! Sou a Juliana, IA da Durand Tech Systen. Como posso te ajudar com seu projeto hoje? 🚀<br><br><a href="orcamento.html" target="_blank" rel="noopener noreferrer" onclick="window.abrirOrcamentoNovaPagina(); return false;" style="color:#4f46e5; font-weight:700">📋 Clique aqui para fazer um Orçamento (abre em nova página)</a></div></div>
     <div id="durand-chat-input-area"><input id="durand-chat-input" placeholder="Digite sua mensagem..." /><button id="durand-chat-send">➤</button></div>
   `;
   document.body.appendChild(btn);
@@ -62,15 +67,15 @@ const CONFIG = {
       let reply = data.reply || data.response || 'Desculpe, tive um problema. Me chama no WhatsApp?';
       // Se falar de orçamento, adiciona link que abre em nova aba
       if(text.toLowerCase().includes('orçamento') || text.toLowerCase().includes('orcamento')){
-        reply += '<br><br><a href="/orcamento.html" target="_blank" style="display:inline-block; background:#4f46e5; color:#fff; padding:8px 14px; border-radius:8px; text-decoration:none; font-weight:700">📋 Abrir Formulário de Orçamento</a>';
+        reply += '<br><br><a href="orcamento.html" target="_blank" rel="noopener noreferrer" onclick="window.abrirOrcamentoNovaPagina(); return false;" style="display:inline-block; background:#4f46e5; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; font-weight:700">📋 Abrir Formulário de Orçamento em Nova Página</a>';
       }
       addMsg(reply, 'bot');
-      if(data.whatsapp_url){ window.open(data.whatsapp_url, '_blank'); }
-      if(data.action === 'whatsapp_juliana'){ window.open(`https://wa.me/${CONFIG.WHATSAPP_JULIANA}?text=` + encodeURIComponent(text), '_blank'); }
-      if(data.action === 'whatsapp_vendas'){ window.open(`https://wa.me/${CONFIG.WHATSAPP_VENDAS}?text=` + encodeURIComponent(text), '_blank'); }
+      if(data.whatsapp_url){ window.open(data.whatsapp_url, '_blank', 'noopener'); }
+      if(data.action === 'whatsapp_juliana'){ window.open(`https://wa.me/${CONFIG.WHATSAPP_JULIANA}?text=` + encodeURIComponent(text), '_blank', 'noopener'); }
+      if(data.action === 'whatsapp_vendas'){ window.open(`https://wa.me/${CONFIG.WHATSAPP_VENDAS}?text=` + encodeURIComponent(text), '_blank', 'noopener'); }
     } catch(e){
       messages.lastChild.remove();
-      addMsg('No momento estou offline! <br><br><a href="/orcamento.html" target="_blank" style="display:inline-block; background:#4f46e5; color:#fff; padding:8px 14px; border-radius:8px; text-decoration:none">📋 Fazer Orçamento</a>', 'bot');
+      addMsg('No momento estou offline! <br><br><a href="orcamento.html" target="_blank" rel="noopener noreferrer" onclick="window.abrirOrcamentoNovaPagina(); return false;" style="display:inline-block; background:#4f46e5; color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none">📋 Fazer Orçamento em Nova Página</a>', 'bot');
     }
   }
   btn.onclick = ()=> win.classList.toggle('open');
