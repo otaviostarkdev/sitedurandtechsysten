@@ -64,7 +64,7 @@ h1 span{ background:linear-gradient(135deg,var(--primary),var(--primary2)); -web
 <body>
 <div class="header">
 <div class="logo"><div class="logo-icon">DT</div><div class="logo-text"><b>DURAND TECH</b><span>DESENVOLVIMENTO</span></div></div>
-<div class="header-right"><a href="index.html" style="background:var(--neon);color:#000;padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:800;font-size:12px">← Voltarr ao Site</a><div class="pill">(53) 99707-3648</div><div class="pill">PIX durandtechsysten@gmail.com</div></div>
+<div class="header-right"><a href="index.html" style="background:var(--neon);color:#000;padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:800;font-size:12px">← Voltar ao Site</a><div class="pill">(53) 99707-3648</div><div class="pill">PIX durandtechsysten@gmail.com</div></div>
 </div>
 <div class="progress-line"><div class="progress-fill" id="progress"></div></div>
 
@@ -72,7 +72,7 @@ h1 span{ background:linear-gradient(135deg,var(--primary),var(--primary2)); -web
 <div class="main">
 <div class="step-label"><span id="stepLabel">07 / 07</span> <span class="percent" id="percent">100%</span></div>
 <div id="questionArea"></div>
-<div class="btns"><button class="btn-back" onclick="prev()">Voltarr</button></div>
+<div class="btns"><button class="btn-back" onclick="prev()">Voltar</button></div>
 <div class="previa">
 <div class="previa-title">PRÉVIA DA MENSAGEM</div>
 <div class="previa-box" id="previaBox"></div>
@@ -101,6 +101,14 @@ const steps = [
 ];
 let data = {};
 let current = 0;
+// se veio tipo da index, já pula para o primeiro campo vazio após projeto
+function getFirstEmptyIndex(){
+  for(let i=0;i<steps.length;i++){
+    if(!data[steps[i].id]) return i;
+  }
+  return steps.length-1;
+}
+
 
 // --- INTEGRAÇÃO INDEX + WIDGET: aceita ?tipo=xxx ---
 (function(){
@@ -110,6 +118,11 @@ let current = 0;
     if(tipo){ data['projeto'] = tipo; }
     const projetoNome = params.get('projeto');
     if(projetoNome){ data['projeto'] = projetoNome; }
+    // se projeto já veio preenchido, já posiciona no próximo vazio
+    if(data['projeto']){ current = 4; // depois de projeto, vai para logo (evita ficar preso)
+      // ajusta dinamicamente para primeiro vazio real
+      setTimeout(()=>{ current = getFirstEmptyIndex(); render(); },0);
+    }
   }catch(e){}
 })();
 
@@ -136,7 +149,9 @@ return q.replace('?','<span>?</span>');
 function selectOpt(val){
 const id = steps[current].id;
 data[id]=val;
-render();
+document.addEventListener('DOMContentLoaded', ()=>{ render(); });
+// fallback immediate if already loaded
+if(document.readyState !== 'loading') render();
 setTimeout(()=> next(), 300);
 }
 function next(){
@@ -145,11 +160,15 @@ if(steps[current].type==='text'){
 const v = document.getElementById('field')?.value.trim();
 if(v) data[steps[current].id]=v;
 }
-current++; render(); 
+current++; document.addEventListener('DOMContentLoaded', ()=>{ render(); });
+// fallback immediate if already loaded
+if(document.readyState !== 'loading') render(); 
 } else { enviar(); }
 }
 function prev(){
-if(current>0){ current--; render(); }
+if(current>0){ current--; document.addEventListener('DOMContentLoaded', ()=>{ render(); });
+// fallback immediate if already loaded
+if(document.readyState !== 'loading') render(); }
 }
 function updateResumo(){
 const map = { nome:'NOME', empresa:'EMPRESA', whatsapp:'WHATSAPP', projeto:'PROJETO', logo:'LOGO', prazo:'PRAZO', origem:'ORIGEM' };
@@ -165,7 +184,9 @@ function enviar(){
 const msg = `Olá Durand Tech! 🚀%0A%0A*ORÇAMENTO NOVO - FORMULÁRIO SITE*%0A%0A👤 Nome: ${data.nome}%0A🏢 Empresa: ${data.empresa}%0A📱 WhatsApp: ${data.whatsapp}%0A💼 Projeto: ${data.projeto}%0A🎨 Logo: ${data.logo}%0A⏰ Prazo: ${data.prazo}%0A🔍 Origem: ${data.origem}%0A%0AVim pelo formulário do site: durandtechsysten.com.br/orcamento.html`;
 window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, '_blank');
 }
-render();
+document.addEventListener('DOMContentLoaded', ()=>{ render(); });
+// fallback immediate if already loaded
+if(document.readyState !== 'loading') render();
 // permite salvar dados ao digitar
 document.addEventListener('input', e=>{
 if(e.target.id==='field'){
