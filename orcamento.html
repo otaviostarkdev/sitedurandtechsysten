@@ -4,62 +4,67 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orçamento - Durand Tech System</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{ --neon:#00ff88; --bg:#050a06; --card:#0f1a12; --card2:#131f16; --border:#1e3a24; --muted:#6b8a6f; --white:#e8fff0; }
+
+:root{ --primary:#00D1FF; --primary2:#0A84FF; --primary-glow:rgba(0,209,255,0.3); --bg:#020208; --bg2:#080A14; --card:rgba(10,14,30,0.6); --card2:rgba(15,20,40,0.8); --border:rgba(0,209,255,0.12); --border2:rgba(0,209,255,0.3); --muted:#7A8AA0; --white:#E6F0FF; --grid:rgba(0,209,255,0.03); }
 *{margin:0;padding:0;box-sizing:border-box}
-body{ background:var(--bg); color:var(--white); font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden }
-.header{ height:64px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 24px; background:rgba(5,10,6,0.9); backdrop-filter:blur(10px); position:sticky; top:0; z-index:10 }
+body{ background:#020208; color:var(--white); font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden; position:relative }
+body::before{ content:''; position:fixed; inset:0; background: radial-gradient(800px at 15% 20%, rgba(0,209,255,0.12), transparent 60%), radial-gradient(600px at 85% 80%, rgba(10,132,255,0.10), transparent 60%), linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size:auto, auto, 40px 40px, 40px 40px; pointer-events:none; z-index:0 }
+.header{ height:72px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 24px; background:rgba(2,2,8,0.8); backdrop-filter:blur(24px); position:sticky; top:0; z-index:10 }
 .logo{ display:flex; align-items:center; gap:12px }
-.logo-icon{ width:36px; height:36px; background:var(--neon); border-radius:8px; display:grid; place-items:center; font-weight:800; color:#000; font-family:'JetBrains Mono' }
+.logo-icon{ width:40px; height:40px; background:linear-gradient(135deg,var(--primary),var(--primary2)); border-radius:10px; display:grid; place-items:center; font-weight:800; color:#000; font-family:'JetBrains Mono'; box-shadow:0 0 20px var(--primary-glow); font-size:16px }
 .logo-text{ line-height:1 }
-.logo-text b{ font-size:14px; letter-spacing:0.5px; display:block }
-.logo-text span{ font-size:9px; letter-spacing:2px; color:var(--muted); font-family:'JetBrains Mono' }
-.header-right{ display:flex; gap:10px; align-items:center; font-family:'JetBrains Mono'; font-size:12px }
-.pill{ background:#111f14; border:1px solid var(--border); padding:6px 12px; border-radius:20px; color:var(--muted) }
-.progress-line{ height:2px; background:#0f1a12; width:100%; position:relative }
-.progress-fill{ height:100%; background:var(--neon); width:100%; box-shadow:0 0 10px var(--neon); transition:width 0.5s }
-.container{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.2fr 0.8fr; gap:32px; padding:40px 24px }
+.logo-text b{ font-size:14px; letter-spacing:1px; display:block; font-weight:800; color:#fff }
+.logo-text span{ font-size:9px; letter-spacing:3px; color:var(--primary); font-family:'JetBrains Mono'; font-weight:700 }
+.header-right{ display:flex; gap:10px; align-items:center; font-family:'Inter'; font-size:12px }
+.pill{ background:rgba(0,209,255,0.06); border:1px solid var(--border); padding:7px 14px; border-radius:20px; color:var(--muted); font-weight:500; font-family:'JetBrains Mono'; font-size:11px }
+.progress-line{ height:1px; background:rgba(255,255,255,0.06); width:100%; position:relative; z-index:1 }
+.progress-fill{ height:2px; background:linear-gradient(90deg,var(--primary),var(--primary2)); width:100%; box-shadow:0 0 20px var(--primary); transition:width 0.5s; margin-top:-1px }
+.container{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.2fr 0.8fr; gap:32px; padding:48px 24px; position:relative; z-index:1 }
 @media(max-width:900px){ .container{ grid-template-columns:1fr } .side{ order:-1 } }
-.step-label{ font-family:'JetBrains Mono'; font-size:11px; letter-spacing:3px; color:var(--neon); margin-bottom:24px; display:flex; align-items:center; gap:12px }
-.step-label::after{ content:''; height:1px; flex:1; background:linear-gradient(90deg,var(--border),transparent) }
+.step-label{ font-family:'JetBrains Mono'; font-size:11px; letter-spacing:3px; color:var(--primary); margin-bottom:24px; display:flex; align-items:center; gap:12px; font-weight:700 }
+.step-label::after{ content:''; height:1px; flex:1; background:linear-gradient(90deg,var(--border2),transparent) }
 .percent{ font-family:'JetBrains Mono'; font-size:11px; color:var(--muted) }
-h1{ font-size:48px; line-height:0.95; letter-spacing:-2px; margin-bottom:12px; font-weight:800 }
-h1 span{ color:var(--neon) }
-.sub{ font-family:'JetBrains Mono'; font-size:12px; color:var(--muted); margin-bottom:32px }
-.options{ display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:460px }
+h1{ font-size:56px; line-height:0.90; letter-spacing:-3px; margin-bottom:16px; font-weight:900; font-family:'Plus Jakarta Sans'; color:#fff }
+h1 span{ background:linear-gradient(135deg,var(--primary),var(--primary2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent }
+.sub{ font-family:'JetBrains Mono'; font-size:12px; color:var(--muted); margin-bottom:32px; letter-spacing:0.5px }
+.options{ display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:480px }
 @media(max-width:500px){ .options{ grid-template-columns:1fr } }
-.opt{ background:#0c1710; border:1px solid var(--border); padding:16px; border-radius:14px; text-align:center; cursor:pointer; font-size:14px; color:#9abfa2; transition:0.2s; font-weight:500 }
-.opt:hover{ border-color:var(--neon); background:#102116; color:var(--white) }
-.opt.selected{ background:rgba(0,255,136,0.12); border-color:var(--neon); color:var(--neon); box-shadow:0 0 20px rgba(0,255,136,0.15) inset }
-.btns{ display:flex; gap:12px; margin-top:24px }
-.btn-back{ background:transparent; border:1px solid var(--border); color:var(--muted); padding:12px 22px; border-radius:24px; cursor:pointer; font-family:'JetBrains Mono'; font-size:12px }
-.btn-back:hover{ color:var(--white); border-color:var(--white) }
-.input-box{ max-width:460px; }
-.input-box input{ width:100%; background:#0c1710; border:1px solid var(--border); padding:18px 20px; border-radius:14px; color:var(--white); font-size:16px; outline:none; font-family:'Inter' }
-.input-box input:focus{ border-color:var(--neon); box-shadow:0 0 0 3px rgba(0,255,136,0.1) }
-.input-box input::placeholder{ color:var(--muted) }
-.side{ background:var(--card); border:1px solid var(--border); border-radius:20px; padding:20px; height:fit-content; position:sticky; top:100px }
-.side-title{ font-family:'JetBrains Mono'; font-size:10px; letter-spacing:3px; color:var(--muted); margin-bottom:20px; display:flex; align-items:center; gap:8px }
-.side-title i{ width:6px; height:6px; background:var(--neon); border-radius:50%; box-shadow:0 0 8px var(--neon); display:inline-block; animation:pulse 2s infinite }
-@keyframes pulse{ 0%{opacity:1} 50%{opacity:0.5} 100%{opacity:1} }
-.row{ display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:13px }
-.row span:first-child{ font-family:'JetBrains Mono'; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:2px }
-.row span:last-child{ font-weight:600; color:var(--white); text-align:right; max-width:60%; overflow:hidden; text-overflow:ellipsis }
-.btn-whats{ width:100%; background:var(--neon); color:#000; border:none; padding:16px; border-radius:14px; font-weight:800; font-size:14px; cursor:pointer; margin-top:20px; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 0 30px rgba(0,255,136,0.3); transition:0.2s }
-.btn-whats:hover{ transform:translateY(-2px); box-shadow:0 0 40px rgba(0,255,136,0.5) }
-.hint{ font-family:'JetBrains Mono'; font-size:10px; color:var(--muted); text-align:center; margin-top:10px }
-.alert{ background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.15); border-radius:12px; padding:12px; margin-top:18px; display:flex; gap:10px; font-size:12px; line-height:1.4 }
-.alert b{ color:var(--neon) }
-.previa{ margin-top:32px; border-top:1px solid var(--border); padding-top:20px }
-.previa-title{ font-family:'JetBrains Mono'; font-size:10px; letter-spacing:2px; color:var(--muted); margin-bottom:12px }
-.previa-box{ background:#080f0a; border:1px solid var(--border); border-radius:14px; padding:14px; font-family:'JetBrains Mono'; font-size:11px; color:var(--muted); line-height:1.6; white-space:pre-line; min-height:100px }
+.opt{ background:rgba(10,14,30,0.4); border:1px solid var(--border); padding:18px; border-radius:12px; text-align:center; cursor:pointer; font-size:13px; color:#8A9AB0; transition:0.25s; font-weight:500; backdrop-filter:blur(10px); position:relative; overflow:hidden }
+.opt::before{ content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(0,209,255,0.05), transparent); opacity:0; transition:0.25s }
+.opt:hover{ border-color:var(--border2); color:var(--white); transform:translateY(-2px); box-shadow:0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(0,209,255,0.1) }
+.opt:hover::before{ opacity:1 }
+.opt.selected{ background:linear-gradient(135deg, rgba(0,209,255,0.15), rgba(10,132,255,0.12)); border-color:var(--primary); color:#fff; box-shadow:0 0 30px rgba(0,209,255,0.2) inset, 0 0 20px rgba(0,209,255,0.15); font-weight:700 }
+.btns{ display:flex; gap:12px; margin-top:28px }
+.btn-back{ background:transparent; border:1px solid rgba(255,255,255,0.1); color:var(--muted); padding:12px 24px; border-radius:10px; cursor:pointer; font-family:'JetBrains Mono'; font-size:12px; font-weight:600; transition:0.2s; letter-spacing:1px }
+.btn-back:hover{ color:#fff; border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.05) }
+.input-box{ max-width:480px; position:relative }
+.input-box input{ width:100%; background:rgba(10,14,30,0.5); border:1px solid var(--border); padding:18px 20px; border-radius:12px; color:#fff; font-size:16px; outline:none; font-family:'Inter'; transition:0.2s; backdrop-filter:blur(10px) }
+.input-box input:focus{ border-color:var(--primary); box-shadow:0 0 0 3px rgba(0,209,255,0.12), 0 0 20px rgba(0,209,255,0.15); background:rgba(10,14,30,0.7) }
+.input-box input::placeholder{ color:#5A6A80 }
+.side{ background:rgba(10,14,30,0.5); border:1px solid var(--border); border-radius:20px; padding:24px; height:fit-content; position:sticky; top:100px; backdrop-filter:blur(20px); box-shadow:0 20px 60px rgba(0,0,0,0.5) }
+.side-title{ font-family:'JetBrains Mono'; font-size:10px; letter-spacing:3px; color:var(--muted); margin-bottom:20px; display:flex; align-items:center; gap:8px; font-weight:700 }
+.side-title i{ width:6px; height:6px; background:var(--primary); border-radius:50%; box-shadow:0 0 10px var(--primary); display:inline-block; animation:pulse 2s infinite }
+@keyframes pulse{ 0%{opacity:1; box-shadow:0 0 10px var(--primary)} 50%{opacity:0.6; box-shadow:0 0 20px var(--primary)} 100%{opacity:1; box-shadow:0 0 10px var(--primary)} }
+.row{ display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:13px }
+.row span:first-child{ font-family:'JetBrains Mono'; font-size:10px; color:#5A6A80; text-transform:uppercase; letter-spacing:1px; margin-top:2px; font-weight:600 }
+.row span:last-child{ font-weight:600; color:#E6F0FF; text-align:right; max-width:60%; overflow:hidden; text-overflow:ellipsis }
+.btn-whats{ width:100%; background:linear-gradient(135deg,var(--primary),var(--primary2)); color:#000; border:none; padding:16px; border-radius:12px; font-weight:800; font-size:14px; cursor:pointer; margin-top:20px; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 0 30px var(--primary-glow); transition:0.25s; font-family:'Inter'; letter-spacing:0.5px }
+.btn-whats:hover{ transform:translateY(-2px); box-shadow:0 0 40px rgba(0,209,255,0.5), 0 8px 30px rgba(0,0,0,0.4); filter:brightness(1.1) }
+.hint{ font-family:'JetBrains Mono'; font-size:10px; color:#5A6A80; text-align:center; margin-top:10px }
+.alert{ background:rgba(0,209,255,0.05); border:1px solid rgba(0,209,255,0.15); border-radius:12px; padding:14px; margin-top:20px; display:flex; gap:10px; font-size:12px; line-height:1.5; color:#8A9AB0 }
+.alert b{ color:var(--primary) }
+.previa{ margin-top:32px; border-top:1px solid rgba(255,255,255,0.06); padding-top:20px }
+.previa-title{ font-family:'JetBrains Mono'; font-size:10px; letter-spacing:2px; color:#5A6A80; margin-bottom:12px; font-weight:700 }
+.previa-box{ background:rgba(0,0,0,0.4); border:1px solid var(--border); border-radius:12px; padding:14px; font-family:'JetBrains Mono'; font-size:11px; color:#7A8AA0; line-height:1.6; white-space:pre-line; min-height:100px; backdrop-filter:blur(5px) }
+
 </style>
 </head>
 <body>
 <div class="header">
 <div class="logo"><div class="logo-icon">DT</div><div class="logo-text"><b>DURAND TECH</b><span>DESENVOLVIMENTO</span></div></div>
-<div class="header-right"><a href="index.html" style="background:var(--neon);color:#000;padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:800;font-size:12px">← Voltar ao Site</a><div class="pill">(53) 99707-3648</div><div class="pill">PIX durandtechsysten@gmail.com</div></div>
+<div class="header-right"><a href="index.html" style="background:var(--neon);color:#000;padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:800;font-size:12px">← Voltarr ao Site</a><div class="pill">(53) 99707-3648</div><div class="pill">PIX durandtechsysten@gmail.com</div></div>
 </div>
 <div class="progress-line"><div class="progress-fill" id="progress"></div></div>
 
@@ -67,7 +72,7 @@ h1 span{ color:var(--neon) }
 <div class="main">
 <div class="step-label"><span id="stepLabel">07 / 07</span> <span class="percent" id="percent">100%</span></div>
 <div id="questionArea"></div>
-<div class="btns"><button class="btn-back" onclick="prev()">Voltar</button></div>
+<div class="btns"><button class="btn-back" onclick="prev()">Voltarr</button></div>
 <div class="previa">
 <div class="previa-title">PRÉVIA DA MENSAGEM</div>
 <div class="previa-box" id="previaBox"></div>
