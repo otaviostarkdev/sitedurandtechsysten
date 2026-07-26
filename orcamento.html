@@ -186,7 +186,18 @@ window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, '_blank');
 }
 document.addEventListener('DOMContentLoaded', ()=>{ render(); });
 // fallback immediate if already loaded
-if(document.readyState !== 'loading') render();
+if(document.readyState !== 'loading') // RENDER ROBUSTO - sem F5 nunca mais
+function safeRender(){
+  try{ render(); }catch(e){ console.log('retry render', e); }
+}
+document.addEventListener('DOMContentLoaded', safeRender);
+window.addEventListener('load', safeRender);
+// tenta renderizar imediatamente também
+safeRender();
+// garantia extra: se questionArea ficar vazia por cache, tenta de novo em 150ms e 500ms
+setTimeout(safeRender, 150);
+setTimeout(safeRender, 500);
+
 // permite salvar dados ao digitar
 document.addEventListener('input', e=>{
 if(e.target.id==='field'){
