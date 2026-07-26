@@ -406,77 +406,9 @@ function mostrarApp(){document.getElementById('instView').classList.add('hidden'
 function mostrarAppComPlano(p,v){mostrarApp();setTimeout(()=>{if(window.selecionarPlano) selecionarPlano(p,v);document.querySelector('[data-page="pagamento"]').click();},400);}
 function voltarParaLanding(){document.getElementById('appWrapper').classList.add('hidden');document.getElementById('instView').classList.remove('hidden');document.body.classList.remove('app-mode');window.scrollTo(0,0);}
 function solicitarOrcamento(tipo){
-  // Abre orcamento.html em nova aba com tipo pré-selecionado via querystring
-  const url = 'orcamento.html?tipo=' + encodeURIComponent(tipo);
-  window.open(url, '_blank', 'noopener');
-  // fallback: também tenta scroll se estiver na mesma página
-  try{document.getElementById('orcTipo').value=tipo;document.getElementById('orcamento').scrollIntoView({behavior:'smooth'});}catch(e){}
-}
-document.getElementById('orcValor')?.addEventListener('input',e=>{document.getElementById('orcValorLabel').textContent='R$ '+e.target.value;});
-function enviarOrcamento(){const nome=document.getElementById('orcNome').value||'Cliente';const emp=document.getElementById('orcEmpresa').value||'';const tipo=document.getElementById('orcTipo').value;const desc=document.getElementById('orcDesc').value||'';const valor=document.getElementById('orcValor').value;const msg=encodeURIComponent(`Olá Durand Tech System!%0A%0ASou ${nome} da empresa ${emp}%0A%0AQuero: ${tipo}%0ADetalhes: ${desc}%0AOrçamento estimado: R$ ${valor}%0A%0APIX: durandtechsysten@gmail.com`);window.open('https://wa.me/5553997073648?text='+msg,'_blank');}
-function enviarTelegram(){const nome=document.getElementById('orcNome').value||'Cliente';const tipo=document.getElementById('orcTipo').value;const msg=encodeURIComponent(`Olá Durand Tech! Sou ${nome} - Quero ${tipo}`);window.open('https://t.me/5553997073648?text='+msg,'_blank');}
-</script>
-<script>
-const PIX_VENDA_KEY = 'durandtechsysten@gmail.com';
-const PIX_VENDA_NOME = 'OTAVIO RENAN DURAND ROSA';
-const PIX_VENDA_CIDADE = 'PELOTAS';
-const WHATSAPP_NUM = '5553997073648';
-
-document.addEventListener('DOMContentLoaded', function() {
-  const loginScreen=document.getElementById('loginScreen');
-  const app=document.getElementById('app');
-  const formLogin=document.getElementById('formLogin');
-  let currentUserLevel='admin';
-  let currentBoletoIdForEmail=null;
-
-  function doLogin(nivel){
-    currentUserLevel=nivel||document.getElementById('loginNivel').value;
-    const nomes={admin:'Admin Durand',porteiro:'Portaria',morador:'Morador',zelador:'Zelador'};
-    document.getElementById('userName').textContent=nomes[currentUserLevel]||'Usuário';
-    document.getElementById('userRole').textContent=currentUserLevel+' - PIX durandtechsysten@gmail.com';
-    document.querySelectorAll('.nav-btn').forEach(btn=>{
-      const perm=btn.dataset.perm;
-      btn.style.display=(perm==='all'||perm.includes(currentUserLevel)||currentUserLevel==='admin')?'flex':'none';
-    });
-    if(loginScreen) loginScreen.classList.add('hidden');
-    if(app) app.classList.remove('hidden');
-    initApp();
-  }
-  if(formLogin) formLogin.addEventListener('submit',e=>{e.preventDefault(); doLogin(document.getElementById('loginNivel').value);});
-  document.getElementById('btnLogout')?.addEventListener('click',()=>{ if(app) app.classList.add('hidden'); if(loginScreen) loginScreen.classList.remove('hidden'); });
-
-  window.moradores=JSON.parse(localStorage.getItem('dt_moradores'))||[{id:1,unidade:"A-101",nome:"Maria Silva",contato:"55539999102020",email:"maria@email.com",status:"atrasado",tipo:"Proprietário",foto:null}];
-  window.financeiro=JSON.parse(localStorage.getItem('dt_financeiro'))||[{id:1,data:"2026-07-18",desc:"Taxa",tipo:"receita",valor:550,status:"pago"}];
-  window.ocorrencias=JSON.parse(localStorage.getItem('dt_ocorrencias'))||[{id:1,data:"22/07/2026",unidade:"B-204",tipo:"Barulho",desc:"Som alto",status:"aberta"}];
-  window.reservas=JSON.parse(localStorage.getItem('dt_reservas'))||[{id:1,area:"Salão",data:"2026-07-25",unidade:"A-101",nome:"Maria"}];
-  window.comunicados=JSON.parse(localStorage.getItem('dt_comunicados'))||[{id:1,data:"22/07/2026",titulo:"Bem-vindo Durand Tech",texto:"PIX durandtechsysten@gmail.com - (53) 99707-3648"}];
-  window.boletos=JSON.parse(localStorage.getItem('dt_boletos'))||[{id:1001,venc:"2026-06-10",unidade:"A-101",nome:"Maria Silva",contato:"55539999102020",email:"maria@email.com",valor:550,status:"atrasado"}];
-  window.zeladores=JSON.parse(localStorage.getItem('dt_zeladores'))||[{id:1,nome:"José Silva",contato:"5553999911222",turno:"Integral",salario:1800,foto:null}];
-  window.ocoZeladoria=JSON.parse(localStorage.getItem('dt_ocoZel'))||[{id:1,data:"22/07/2026",unidade:"Garagem",tipo:"Limpeza",desc:"Vazamento",zelador:"José Silva",status:"pendente"}];
-  window.servicosDia=JSON.parse(localStorage.getItem('dt_servicos'))||[{id:1,data:new Date().toISOString().split('T')[0],desc:"Limpar piscina",zelador:"José Silva",prioridade:"Alta",concluido:false}];
-  window.orcZeladores=JSON.parse(localStorage.getItem('dt_orcZel'))||[{id:1,data:"2026-07-10",zelador:"José Silva",tipo:"Salário",valor:1800}];
-  window.orcFerramentas=JSON.parse(localStorage.getItem('dt_orcFerr'))||[{id:1,data:"2026-07-15",item:"Vassoura",qtd:2,valor:120}];
-  window.usuarios=JSON.parse(localStorage.getItem('dt_usuarios'))||[{id:1,nome:"Admin",email:"admin@durandtech.com",senha:"123456",nivel:"admin",unidade:""}];
-
-  window.saveAll=function(){
-    localStorage.setItem('dt_moradores',JSON.stringify(window.moradores));
-    localStorage.setItem('dt_financeiro',JSON.stringify(window.financeiro));
-    localStorage.setItem('dt_ocorrencias',JSON.stringify(window.ocorrencias));
-    localStorage.setItem('dt_reservas',JSON.stringify(window.reservas));
-    localStorage.setItem('dt_comunicados',JSON.stringify(window.comunicados));
-    localStorage.setItem('dt_boletos',JSON.stringify(window.boletos));
-    localStorage.setItem('dt_zeladores',JSON.stringify(window.zeladores));
-    localStorage.setItem('dt_ocoZel',JSON.stringify(window.ocoZeladoria));
-    localStorage.setItem('dt_servicos',JSON.stringify(window.servicosDia));
-    localStorage.setItem('dt_orcZel',JSON.stringify(window.orcZeladores));
-    localStorage.setItem('dt_orcFerr',JSON.stringify(window.orcFerramentas));
-    localStorage.setItem('dt_usuarios',JSON.stringify(window.usuarios));
-  }
-
-  window.calculaMultaJuros=function(b){const hoje=new Date();const venc=new Date(b.venc);const diff=Math.floor((hoje-venc)/86400000);if(diff<=0||b.status==='pago')return{dias:0,total:b.valor,multa:0,juros:0};const multa=b.valor*0.02;const juros=b.valor*0.0033*diff;return{dias:diff,multa,juros,total:b.valor+multa+juros};}
-  function gerarPayloadPix(chave,nome,cidade,valor,desc){
-    function fmt(id,v){return id+v.length.toString().padStart(2,'0')+v;}
-    function crc16(p){let crc=0xFFFF;for(let i=0;i<p.length;i++){crc^=p.charCodeAt(i)<<8;for(let j=0;j<8;j++){crc=(crc&0x8000)?((crc<<1)^0x1021)&0xFFFF:(crc<<1)&0xFFFF;}}return crc.toString(16).toUpperCase().padStart(4,'0');}
+  const url = 'orcamento.html?tipo=' + encodeURIComponent(tipo) + '&v=2';
+  window.location.href = url;
+}return crc.toString(16).toUpperCase().padStart(4,'0');}
     const ma=fmt('00','BR.GOV.BCB.PIX')+fmt('01',chave);
     const ps='000201'+fmt('26',ma)+'520400005303986'+fmt('54',valor.toFixed(2))+'5802BR'+fmt('59',nome.substring(0,25))+fmt('60',cidade.substring(0,15))+fmt('62',fmt('05',desc.substring(0,20)));
     return ps+'6304'+crc16(ps+'6304');
