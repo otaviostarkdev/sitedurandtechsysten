@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orçamento - Durand Tech System</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{ --neon:#00ff88; --bg:#050a06; --card:#0f1a12; --card2:#131f16; --border:#1e3a24; --muted:#6b8a6f; --white:#e8fff0; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{ background:var(--bg); color:var(--white); font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden }
+.header{ height:64px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 24px; background:rgba(5,10,6,0.9); backdrop-filter:blur(10px); position:sticky; top:0; z-index:10 }
+.logo{ display:flex; align-items:center; gap:12px }
+.logo-icon{ width:36px; height:36px; background:var(--neon); border-radius:8px; display:grid; place-items:center; font-weight:800; color:#000; font-family:'JetBrains Mono' }
+.logo-text{ line-height:1 }
+.logo-text b{ font-size:14px; letter-spacing:0.5px; display:block }
+.logo-text span{ font-size:9px; letter-spacing:2px; color:var(--muted); font-family:'JetBrains Mono' }
+.header-right{ display:flex; gap:10px; align-items:center; font-family:'JetBrains Mono'; font-size:12px }
+.pill{ background:#111f14; border:1px solid var(--border); padding:6px 12px; border-radius:20px; color:var(--muted) }
+.progress-line{ height:2px; background:#0f1a12; width:100%; position:relative }
+.progress-fill{ height:100%; background:var(--neon); width:100%; box-shadow:0 0 10px var(--neon); transition:width 0.5s }
+.container{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1.2fr 0.8fr; gap:32px; padding:40px 24px }
+@media(max-width:900px){ .container{ grid-template-columns:1fr } .side{ order:-1 } }
+.step-label{ font-family:'JetBrains Mono'; font-size:11px; letter-spacing:3px; color:var(--neon); margin-bottom:24px; display:flex; align-items:center; gap:12px }
+.step-label::after{ content:''; height:1px; flex:1; background:linear-gradient(90deg,var(--border),transparent) }
+.percent{ font-family:'JetBrains Mono'; font-size:11px; color:var(--muted) }
+h1{ font-size:48px; line-height:0.95; letter-spacing:-2px; margin-bottom:12px; font-weight:800 }
+h1 span{ color:var(--neon) }
+.sub{ font-family:'JetBrains Mono'; font-size:12px; color:var(--muted); margin-bottom:32px }
+.options{ display:grid; grid-template-columns:1fr 1fr; gap:12px; max-width:460px }
+@media(max-width:500px){ .options{ grid-template-columns:1fr } }
+.opt{ background:#0c1710; border:1px solid var(--border); padding:16px; border-radius:14px; text-align:center; cursor:pointer; font-size:14px; color:#9abfa2; transition:0.2s; font-weight:500 }
+.opt:hover{ border-color:var(--neon); background:#102116; color:var(--white) }
+.opt.selected{ background:rgba(0,255,136,0.12); border-color:var(--neon); color:var(--neon); box-shadow:0 0 20px rgba(0,255,136,0.15) inset }
+.btns{ display:flex; gap:12px; margin-top:24px }
+.btn-back{ background:transparent; border:1px solid var(--border); color:var(--muted); padding:12px 22px; border-radius:24px; cursor:pointer; font-family:'JetBrains Mono'; font-size:12px }
+.btn-back:hover{ color:var(--white); border-color:var(--white) }
+.input-box{ max-width:460px; }
+.input-box input{ width:100%; background:#0c1710; border:1px solid var(--border); padding:18px 20px; border-radius:14px; color:var(--white); font-size:16px; outline:none; font-family:'Inter' }
+.input-box input:focus{ border-color:var(--neon); box-shadow:0 0 0 3px rgba(0,255,136,0.1) }
+.input-box input::placeholder{ color:var(--muted) }
+.side{ background:var(--card); border:1px solid var(--border); border-radius:20px; padding:20px; height:fit-content; position:sticky; top:100px }
+.side-title{ font-family:'JetBrains Mono'; font-size:10px; letter-spacing:3px; color:var(--muted); margin-bottom:20px; display:flex; align-items:center; gap:8px }
+.side-title i{ width:6px; height:6px; background:var(--neon); border-radius:50%; box-shadow:0 0 8px var(--neon); display:inline-block; animation:pulse 2s infinite }
+@keyframes pulse{ 0%{opacity:1} 50%{opacity:0.5} 100%{opacity:1} }
+.row{ display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:13px }
+.row span:first-child{ font-family:'JetBrains Mono'; font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-top:2px }
+.row span:last-child{ font-weight:600; color:var(--white); text-align:right; max-width:60%; overflow:hidden; text-overflow:ellipsis }
+.btn-whats{ width:100%; background:var(--neon); color:#000; border:none; padding:16px; border-radius:14px; font-weight:800; font-size:14px; cursor:pointer; margin-top:20px; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 0 30px rgba(0,255,136,0.3); transition:0.2s }
+.btn-whats:hover{ transform:translateY(-2px); box-shadow:0 0 40px rgba(0,255,136,0.5) }
+.hint{ font-family:'JetBrains Mono'; font-size:10px; color:var(--muted); text-align:center; margin-top:10px }
+.alert{ background:rgba(0,255,136,0.06); border:1px solid rgba(0,255,136,0.15); border-radius:12px; padding:12px; margin-top:18px; display:flex; gap:10px; font-size:12px; line-height:1.4 }
+.alert b{ color:var(--neon) }
+.previa{ margin-top:32px; border-top:1px solid var(--border); padding-top:20px }
+.previa-title{ font-family:'JetBrains Mono'; font-size:10px; letter-spacing:2px; color:var(--muted); margin-bottom:12px }
+.previa-box{ background:#080f0a; border:1px solid var(--border); border-radius:14px; padding:14px; font-family:'JetBrains Mono'; font-size:11px; color:var(--muted); line-height:1.6; white-space:pre-line; min-height:100px }
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo"><div class="logo-icon">DT</div><div class="logo-text"><b>DURAND TECH</b><span>DESENVOLVIMENTO</span></div></div>
+<div class="header-right"><a href="index.html" style="background:var(--neon);color:#000;padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:800;font-size:12px">← Voltar ao Site</a><div class="pill">(53) 99707-3648</div><div class="pill">PIX durandtechsysten@gmail.com</div></div>
+</div>
+<div class="progress-line"><div class="progress-fill" id="progress"></div></div>
+
+<div class="container">
+<div class="main">
+<div class="step-label"><span id="stepLabel">07 / 07</span> <span class="percent" id="percent">100%</span></div>
+<div id="questionArea"></div>
+<div class="btns"><button class="btn-back" onclick="prev()">Voltar</button></div>
+<div class="previa">
+<div class="previa-title">PRÉVIA DA MENSAGEM</div>
+<div class="previa-box" id="previaBox"></div>
+</div>
+</div>
+
+<div class="side">
+<div class="side-title"><i></i> RESUMO • AO VIVO</div>
+<div id="resumo"></div>
+<button class="btn-whats" onclick="enviar()"><span>◉</span> Enviar para Orçamento via WhatsApp</button>
+<div class="hint">• abre no WhatsApp com mensagem pronta</div>
+<div class="alert"><span>⚡</span><span><b>Resposta em até 2h</b> úteis. Sem ligação, sem spam. Direto no WhatsApp.</span></div>
+</div>
+</div>
+
+<script>
+const WHATSAPP = '5553997073648';
+const steps = [
+{ id:'nome', q:'Qual seu nome?', type:'text', placeholder:'Ex: Otavio Renan' },
+{ id:'empresa', q:'Qual sua empresa?', type:'text', placeholder:'Ex: Joalheria Silva' },
+{ id:'whatsapp', q:'Seu WhatsApp para contato?', type:'text', placeholder:'Ex: 53991458797' },
+{ id:'projeto', q:'Qual projeto você precisa?', type:'options', options:['Site R$ 497','Site R$ 997','CondoManager R$ 135/mês','CondoManager R$ 847/ano','CondoManager Vitalício R$ 3500','App / Sistema','Outro'] },
+{ id:'logo', q:'Você já tem logo?', type:'options', options:['Sim','Não','Preciso criar'] },
+{ id:'prazo', q:'Qual seu prazo?', type:'options', options:['Urgente','7 dias','15 dias','30 dias','Sem pressa'] },
+{ id:'origem', q:'Como nos conheceu?', type:'options', options:['Instagram','Indicação','Google','WhatsApp','Outro'] }
+];
+let data = {};
+let current = 0;
+
+// --- INTEGRAÇÃO INDEX + WIDGET: aceita ?tipo=xxx ---
+(function(){
+  try{
+    const params = new URLSearchParams(window.location.search);
+    const tipo = params.get('tipo');
+    if(tipo){ data['projeto'] = tipo; }
+    const projetoNome = params.get('projeto');
+    if(projetoNome){ data['projeto'] = projetoNome; }
+  }catch(e){}
+})();
+
+
+function render(){
+const step = steps[current];
+document.getElementById('stepLabel').textContent = `0${current+1} / 0${steps.length}`;
+document.getElementById('percent').textContent = Math.round(((current+1)/steps.length)*100)+'%';
+document.getElementById('progress').style.width = ((current+1)/steps.length*100)+'%';
+let html = `<h1>${getTitle(step.q)}</h1><div class="sub">Pressione Enter ↵ para continuar</div>`;
+if(step.type==='text'){
+html += `<div class="input-box"><input id="field" value="${data[step.id]||''}" placeholder="${step.placeholder}" onkeydown="if(event.key==='Enter') next()" /></div>`;
+} else {
+html += `<div class="options">` + step.options.map(o=>`<div class="opt ${data[step.id]===o?'selected':''}" onclick="selectOpt('${o.replace(/'/g,"\'")}')">${o}</div>`).join('') + `</div>`;
+}
+document.getElementById('questionArea').innerHTML = html;
+if(step.type==='text') setTimeout(()=>document.getElementById('field')?.focus(),100);
+updateResumo();
+}
+function getTitle(q){
+if(q.includes('conheceu')) return 'Como nos <span>conheceu?</span>';
+return q.replace('?','<span>?</span>');
+}
+function selectOpt(val){
+const id = steps[current].id;
+data[id]=val;
+render();
+setTimeout(()=> next(), 300);
+}
+function next(){
+if(current < steps.length-1){ 
+if(steps[current].type==='text'){
+const v = document.getElementById('field')?.value.trim();
+if(v) data[steps[current].id]=v;
+}
+current++; render(); 
+} else { enviar(); }
+}
+function prev(){
+if(current>0){ current--; render(); }
+}
+function updateResumo(){
+const map = { nome:'NOME', empresa:'EMPRESA', whatsapp:'WHATSAPP', projeto:'PROJETO', logo:'LOGO', prazo:'PRAZO', origem:'ORIGEM' };
+let html='';
+for(let k in map){
+html+=`<div class="row"><span>${map[k]}</span><span>${data[k]||'-'}</span></div>`;
+}
+document.getElementById('resumo').innerHTML = html;
+let previa = `Nome: ${data.nome||'-'}\nEmpresa: ${data.empresa||'-'}\nWhatsApp: ${data.whatsapp||'-'}\nProjeto: ${data.projeto||'-'}\nLogo: ${data.logo||'-'}\nPrazo: ${data.prazo||'-'}\nOrigem: ${data.origem||'-'}`;
+document.getElementById('previaBox').textContent = previa;
+}
+function enviar(){
+const msg = `Olá Durand Tech! 🚀%0A%0A*ORÇAMENTO NOVO - FORMULÁRIO SITE*%0A%0A👤 Nome: ${data.nome}%0A🏢 Empresa: ${data.empresa}%0A📱 WhatsApp: ${data.whatsapp}%0A💼 Projeto: ${data.projeto}%0A🎨 Logo: ${data.logo}%0A⏰ Prazo: ${data.prazo}%0A🔍 Origem: ${data.origem}%0A%0AVim pelo formulário do site: durandtechsysten.com.br/orcamento.html`;
+window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, '_blank');
+}
+render();
+// permite salvar dados ao digitar
+document.addEventListener('input', e=>{
+if(e.target.id==='field'){
+data[steps[current].id]=e.target.value;
+updateResumo();
+}
+});
+</script>
+</body>
+</html>
