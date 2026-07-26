@@ -1,0 +1,157 @@
+=============================================
+DURAND TECH SYSTEM - GUIA DE COMANDOS
+Otavio Renan Durand Rosa - Pelotas/RS
+https://durandtechsysten.com.br
+=============================================
+
+1. COMANDOS GIT - DEPLOY NA VERCEL PELO VS CODE
+-------------------------------------------------
+# Verifica o status dos arquivos
+git status
+
+# Adiciona um arquivo específico
+git add index.html
+
+# Adiciona TODOS os arquivos alterados
+git add .
+
+# Salva as alterações com uma mensagem
+git commit -m "descreva o que voce fez aqui"
+
+# Exemplos de mensagens boas:
+git commit -m "remove secao orcamento da home"
+git commit -m "fix favicon chrome v2"
+git commit -m "atualiza valores condominager pro"
+
+# Envia pro GitHub (a Vercel detecta e faz deploy automatico)
+git push
+
+# Se sua branch for main:
+git push origin main
+
+# Se sua branch for master:
+git push origin master
+
+# Puxa alterações do GitHub pro seu PC
+git pull
+
+# Ver historico de commits
+git log --oneline
+
+# Ver qual branch voce esta
+git branch
+
+
+2. COMANDOS DNS - PARA VERIFICAR SE O SITE PROPAGOU
+----------------------------------------------------
+# No CMD do Windows (Win + R -> cmd)
+
+# Limpa o cache DNS do seu PC (quando da NXDOMAIN)
+ipconfig /flushdns
+
+# Ve para qual IP seu dominio esta apontando
+nslookup durandtechsysten.com.br
+nslookup www.durandtechsysten.com.br
+
+# Ve com qual servidor DNS esta resolvendo
+nslookup durandtechsysten.com.br 1.1.1.1
+nslookup durandtechsysten.com.br 8.8.8.8
+
+# Lista todo o cache DNS do seu PC
+ipconfig /displaydns
+
+# Forca abrir sem cache (no navegador anonimo):
+# Ctrl + Shift + N (Chrome)
+# E digite: https://durandtechsysten.com.br
+
+
+3. CONFIGURACAO DNS - HOSTINGER
+-------------------------------
+# O que voce configurou e deu certo:
+
+TIPO  NOME  VALOR                TTL
+A     @     76.76.21.21          14400   (IP raiz Vercel)
+A     @     64.29.17.65          14400   (IP novo Vercel)
+CNAME www   cname.vercel-dns.com 14400   (www aponta pra Vercel)
+A     @     216.198.79.65        14400   (IP backup Vercel)
+
+# Importante: 
+# @ significa dominio raiz: durandtechsysten.com.br (sem www)
+# www significa: www.durandtechsysten.com.br
+# Quando fica Verde/Valid na Vercel, propagou!
+
+
+4. COMANDOS VERCEL - DEPLOYMENT
+--------------------------------
+# Na aba Deployments da Vercel:
+# Building = amarelo = esta subindo
+# Ready = verde = site no ar
+# Error = vermelho = deu erro, clica pra ver log
+
+# Dominios:
+# Valid = OK verde
+# Invalid Configuration = vermelho = DNS errado
+# Pending = aguardando propagar DNS
+
+
+5. COMANDOS DE ATALHO VS CODE
+------------------------------
+Ctrl + '      = Abrir terminal
+Ctrl + J      = Abrir terminal (alternativo)
+Ctrl + S      = Salvar arquivo
+Ctrl + Shift + P = Paleta de comandos
+Ctrl + P      = Busca rapida de arquivo
+F5            = Rodar / Debug
+
+
+6. LIMPAR CACHE DO NAVEGADOR (FAVICON NAO APARECE)
+---------------------------------------------------
+# Chrome:
+Ctrl + F5              = Recarrega forcado
+Ctrl + Shift + R       = Recarrega sem cache
+Ctrl + Shift + Del     = Limpar cache (marque "Imagens e arquivos")
+
+# Forcar favicon:
+# Acesse direto: https://durandtechsysten.com.br/favicon.ico?v=2
+# Depois Ctrl + F5
+
+# Firefox:
+Ctrl + F5
+# Edge:
+Ctrl + F5
+
+
+7. SEQUENCIA COMPLETA QUE VOCE USOU HOJE (DECORAR)
+--------------------------------------------------
+1. Edita o arquivo index.html no VS Code
+2. Salva: Ctrl + S
+3. Abre terminal: Ctrl + '
+4. git add index.html
+5. git commit -m "o que voce fez"
+6. git push
+7. Vai na Vercel > Deployments > espera ficar Ready (verde)
+8. Testa no anonimo: https://durandtechsysten.com.br
+
+# Se der erro de DNS:
+ipconfig /flushdns
+# E testa no 4G do celular
+
+
+8. SEUS LINKS IMPORTANTES
+--------------------------
+Site: https://durandtechsysten.com.br
+Orcamento: https://durandtechsysten.com.br/orcamento.html
+GitHub: github.com/otaviorenan648-cpu
+Vercel: vercel.com
+DNS Checker: dnschecker.org/#A/www.durandtechsysten.com.br
+Hostinger: hpanel.hostinger.com
+
+PIX: durandtechsysten@gmail.com
+WhatsApp: (53) 99707-3648
+Instagram: @durandtechsysten
+
+
+=============================================
+Dica de ouro: Sempre faça git status antes de git add
+e teste em aba anonima depois do deploy!
+=============================================
