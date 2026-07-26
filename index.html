@@ -280,7 +280,7 @@ html{width:100vw;overflow-x:hidden;background:#0a0a0f} body{width:100vw;overflow
 </div>
 </div></section>
 
-<section id="orcamento" class="inst-section"><div class="inst-container"><h2>Solicite seu orçamento</h2><p class="inst-sub">Respondo em até 15 minutos no WhatsApp (53) 99707-3648 • <a href="orcamento.html" target="_blank" rel="noopener" style="color:#4f46e5;font-weight:800;text-decoration:underline">Abrir formulário completo em nova página →</a></p><div class="inst-orcamento"><h3 style="color:#0f172a;margin-bottom:16px">💬 Orçamento Rápido - Durand Tech System</h3><input id="orcNome" class="inst-field" placeholder="Seu nome completo"><input id="orcEmpresa" class="inst-field" placeholder="Empresa / Condomínio"><input id="orcWhats" class="inst-field" placeholder="WhatsApp (53) 99707-3648" value="53997073648"><select id="orcTipo" class="inst-field"><option>Sites Otimizados / Responsivos / Modernos</option><option>Desenvolvimento de Sistemas</option><option>APIs / Integrações</option><option>App Android</option><option>CondoManager PRO - Mensal R$135</option><option>CondoManager PRO - Anual R$847</option><option>CondoManager PRO - Vitalício R$3500</option><option>Pacote Site + CondoManager PRO</option></select><textarea id="orcDesc" class="inst-field" style="min-height:90px" placeholder="Descreva seu projeto..."></textarea><div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><label style="font-size:12px;color:#64748b">Orçamento:</label><input type="range" id="orcValor" min="500" max="30000" value="5000" style="flex:1"><span id="orcValorLabel" style="font-weight:800;color:#4f46e5">R$ 5000</span></div><button class="inst-btn inst-btn-primary" style="width:100%;padding:14px" onclick="enviarOrcamento()">📲 Enviar no WhatsApp (53) 99707-3648</button><button class="inst-btn inst-btn-secondary" style="width:100%;margin-top:8px" onclick="enviarTelegram()">✈️ Enviar no Telegram</button><p style="font-size:10px;color:#94a3b8;margin-top:10px;text-align:center">PIX durandtechsysten@gmail.com • Instagram @durandtechsysten • Pelotas/RS</p></div></div></section>
+
 
 <footer style="padding:40px 0;background:#050508;border-top:1px solid rgba(255,255,255,0.06);text-align:center"><div class="inst-container"><div style="display:flex;justify-content:center;gap:20px;margin-bottom:16px"><a href="https://wa.me/5553997073648" style="color:#fff;text-decoration:none">WhatsApp</a><a href="https://t.me/5553997073648" style="color:#fff;text-decoration:none">Telegram</a><a href="https://instagram.com/durandtechsysten" style="color:#fff;text-decoration:none">Instagram @durandtechsysten</a></div><p style="font-size:11px;color:#6b7280">© 2026 Durand Tech System - Otavio Renan Durand Rosa - CNPJ PIX durandtechsysten@gmail.com - Pelotas/RS<br>Sites, Sistemas, APIs, Apps Android e CondoManager PRO</p></div></footer>
 <a href="https://wa.me/5553997073648" class="inst-whats-float">💬</a>
@@ -793,42 +793,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </section>
 
-<section class="inst-section" id="orcamento-calc">
-<div class="inst-container">
-<h2>Orcamento Online • Calculo Instantaneo + PDF</h2>
-<p class="inst-sub">Marque o que precisa e veja valor na hora. Gera PDF com QR Code PIX durandtechsysten@gmail.com</p>
-<div style="display:grid;grid-template-columns:1fr 380px;gap:24px;max-width:1000px;margin:0 auto">
-<div class="calc-box">
-<h3 style="margin-bottom:12px">Monte seu projeto</h3>
-<div class="calc-item"><label>Site Essencial (1 pagina)</label><input type="checkbox" value="997" onchange="calcTotal()"></div>
-<div class="calc-item"><label>Site Profissional (5 pag + blog)</label><input type="checkbox" value="1997" onchange="calcTotal()"></div>
-<div class="calc-item"><label>Design Premium 2026 + animacoes</label><input type="checkbox" value="800" onchange="calcTotal()"></div>
-<div class="calc-item"><label>Sistema sob medida</label><input type="checkbox" value="4997" onchange="calcTotal()"></div>
-<div class="calc-item"><label>API REST + PIX/WhatsApp</label><input type="checkbox" value="1500" onchange="calcTotal()"></div>
-<div class="calc-item"><label>App Android</label><input type="checkbox" value="3500" onchange="calcTotal()"></div>
-<div class="calc-item"><label>CondoManager PRO Anual</label><input type="checkbox" value="847" onchange="calcTotal()"></div>
-<div class="calc-item"><label>Hospedagem + dominio 1 ano</label><input type="checkbox" value="297" onchange="calcTotal()"></div>
-<div class="calc-item"><label>Logo + identidade</label><input type="checkbox" value="497" onchange="calcTotal()"></div>
-<div class="calc-item"><label>SEO + Google Meu Negocio</label><input type="checkbox" value="697" onchange="calcTotal()"></div>
-<div class="calc-item" style="background:linear-gradient(135deg, rgba(79,70,229,0.08), rgba(124,58,237,0.08));border:1px solid rgba(79,70,229,0.2);border-radius:10px;padding:10px 12px"><label style="display:flex;align-items:center;gap:8px;font-weight:700"><span style="font-size:18px">🤖</span> Criação de Chatbot <span style="background:#4f46e5;color:#fff;font-size:10px;padding:2px 6px;border-radius:10px">NOVO</span></label><input type="checkbox" value="700" onchange="calcTotal()"></div>
-<div style="margin-top:12px"><label style="font-size:12px">Urgencia:</label><select id="urgencia" onchange="calcTotal()" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e2e8f0;margin-top:4px"><option value="1">Normal (15-20 dias)</option><option value="1.3">Urgente (7 dias) +30%</option><option value="1.6">Super urgente (3 dias) +60%</option></select></div>
-</div>
-<div>
-<div class="calc-total">
-<div style="font-size:11px;opacity:0.8">TOTAL ESTIMADO</div>
-<b id="totalValor" style="font-size:28px">R$ 0</b>
-<div style="font-size:10px;margin-top:4px;opacity:0.7">PIX durandtechsysten@gmail.com</div>
-<div id="qrcodeCalc" style="background:#fff;border-radius:10px;padding:10px;margin:12px 0;display:flex;justify-content:center;min-height:100px"></div>
-<div style="font-size:9px;word-break:break-all;background:rgba(255,255,255,0.1);padding:6px;border-radius:6px" id="pixCalcCode">Selecione itens</div>
-</div>
-<button class="inst-btn inst-btn-primary" style="width:100%;margin-top:12px;padding:14px" onclick="gerarPDFOrcamento()">Gerar PDF</button>
-<button class="inst-btn inst-btn-secondary" style="width:100%;margin-top:8px;background:#25D366;color:#fff;border:none" onclick="enviarOrcamentoCalcWhats()">Enviar WhatsApp</button>
-<button class="inst-btn inst-btn-secondary" style="width:100%;margin-top:8px" onclick="simularAprovacaoPIX()">Simular aprovacao PIX API</button>
-<div id="pixStatus" style="margin-top:10px;font-size:11px;text-align:center;color:#10b981;display:none"></div>
-</div>
-</div>
-</div>
-</section>
+
 
 <section class="inst-section inst-section-dark" id="area-cliente">
 <div class="inst-container">
