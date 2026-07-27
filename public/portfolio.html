@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio - Durand Tech System | CondoManager PRO e Stark Agendador</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--primary:#00D1FF;--primary2:#0A84FF}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:#020208;color:#fff;overflow-x:hidden;line-height:1.6}
+.inst-wrapper{background:#020208;color:#fff;min-height:100vh;position:relative}
+.inst-wrapper::before{content:'';position:fixed;inset:0;background:linear-gradient(rgba(0,209,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0,209,255,0.02) 1px, transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0;opacity:0.5}
+.inst-header{position:fixed;top:0;width:100%;z-index:100;background:rgba(2,2,8,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);padding:14px 0}
+.inst-container{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+.inst-nav{display:flex;justify-content:space-between;align-items:center}
+.inst-logo{display:flex;gap:12px;align-items:center;font-weight:800;font-size:18px}
+.inst-logo-icon{width:46px;height:46px;background:#fff;border-radius:50%;display:grid;place-items:center;overflow:hidden;box-shadow:0 0 25px rgba(0,209,255,0.3);border:2px solid rgba(0,209,255,0.3);padding:2px}
+.inst-links{display:flex;gap:24px;align-items:center}
+.inst-links a{color:#9ca3af;text-decoration:none;font-size:13px;font-weight:500;transition:0.2s}
+.inst-links a:hover{color:#fff}
+.inst-btn{padding:10px 20px;border-radius:10px;font-weight:700;border:none;cursor:pointer;text-decoration:none;display:inline-block;font-size:13px;transition:0.2s}
+.inst-btn-primary{background:linear-gradient(135deg,#00D1FF,#0A84FF);color:#fff;box-shadow:0 4px 20px rgba(0,209,255,0.3)}
+.inst-hero{padding:140px 0 50px;text-align:center;position:relative;background:radial-gradient(600px at 20% 20%, rgba(0,209,255,0.15), transparent), radial-gradient(800px at 80% 80%, rgba(10,132,255,0.12), transparent), linear-gradient(180deg,#0a0a0f,#0f0f1a)}
+.inst-badge{display:inline-flex;gap:8px;align-items:center;background:rgba(0,209,255,0.12);border:1px solid rgba(0,209,255,0.2);color:#7DD3FC;font-size:11px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:20px}
+.inst-hero h1{font-family:'Plus Jakarta Sans';font-size:52px;line-height:0.95;font-weight:800;letter-spacing:-2px;margin-bottom:16px}
+.inst-hero h1 span{background:linear-gradient(135deg,#00D1FF,#7DD3FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.inst-hero p{color:#9ca3af;font-size:16px;max-width:600px;margin:0 auto 20px;line-height:1.6}
+
+/* PROJETO CARDS IGUAL AO SITE */
+.inst-product{background:#111113;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;transition:0.3s;position:relative;overflow:hidden;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
+.inst-product:hover{transform:translateY(-3px);border-color:rgba(0,209,255,0.25)}
+.inst-product.featured{border:2px solid #00D1FF;background:linear-gradient(180deg, rgba(0,209,255,0.12), rgba(17,17,19,1));box-shadow:0 20px 60px rgba(0,209,255,0.2)}
+.inst-product-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px}
+.inst-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(0,209,255,0.2),rgba(10,132,255,0.2));border:1px solid rgba(0,209,255,0.2);border-radius:14px;display:grid;place-items:center;font-size:26px}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0}
+.feat{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:12px 14px}
+.feat b{display:block;font-size:13px;margin-bottom:2px;color:#fff}
+.feat span{font-size:12px;color:#9ca3af}
+.mono{background:#0a0a0f;border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:12px 14px;font-family:ui-monospace,monospace;font-size:11px;color:#7DD3FC;margin:14px 0}
+.footer{padding:40px 0;background:#050508;border-top:1px solid rgba(255,255,255,0.06);text-align:center;position:relative;z-index:10}
+@media(max-width:700px){.feat-grid{grid-template-columns:1fr}.inst-hero h1{font-size:36px}}
+</style>
+</head>
+<body>
+<div class="inst-wrapper">
+<header class="inst-header"><div class="inst-container"><div class="inst-nav"><div class="inst-logo"><div class="inst-logo-icon">DT</div>Durand Tech System</div><div class="inst-links"><a href="https://www.durandtechsysten.com.br" target="_blank" rel="noopener noreferrer">← Voltar ao Site</a><a href="https://wa.me/5553997073648" target="_blank" rel="noopener noreferrer" class="inst-btn inst-btn-primary">WhatsApp</a></div></div></div></header>
+
+<section class="inst-hero"><div class="inst-container"><div class="inst-badge">📁 PORTFÓLIO • MESMO ESTILO DO SITE</div><h1>Projetos que <span>entregamos</span></h1><p>Sites, sistemas e apps feitos por Otavio Renan Durand Rosa • Pelotas/RS<br>PIX durandtechsysten@gmail.com • (53) 99707-3648 • @durandtechsysten</p></div></section>
+
+<div class="inst-container" style="padding-bottom:60px">
+
+  <!-- CONDOMANAGER PRO - PRIMEIRO -->
+  <div class="inst-product featured">
+    <div class="inst-product-top"><div style="display:flex;gap:12px;align-items:center"><div class="inst-icon">🏢</div><div><div style="display:flex;gap:8px;align-items:center"><b>CondoManager PRO v2.6</b><span style="background:#00E676;color:#000;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:800">MAIS VENDIDO</span></div><small style="color:#7DD3FC">Sistema completo • R$135/m • R$847/ano • R$3500 vitalício</small></div></div><span style="color:#10b981;font-size:11px;font-weight:700">● ONLINE</span></div>
+    <p style="color:#cbd5e1;font-size:14px;margin-bottom:14px">Sistema completo para condomínios com PIX automático, boletos com juros, zeladoria e backup. O sistema que você testou no login agora é produto oficial da Durand Tech. Dashboard com 86 unidades, saldo R$ 12.430, inadimplência R$ 3.200.</p>
+    <div class="feat-grid">
+      <div class="feat"><b>👥 Moradores com Foto</b><span>Cadastro + foto + busca instantânea + status em-dia/pendente/atrasado</span></div>
+      <div class="feat"><b>💰 Financeiro</b><span>Gráfico 6 meses + PDF + saldo + PIX durandtechsysten@gmail.com</span></div>
+      <div class="feat"><b>🧾 Boletos PIX</b><span>QR Code + multa 2% + juros automático + vencimento</span></div>
+      <div class="feat"><b>🚨 Inadimplentes</b><span>Cobrança em massa WhatsApp + lista pendentes</span></div>
+      <div class="feat"><b>🧹 Zeladoria</b><span>Serviços + orçamentos + 4 PDFs + zeladores por turno</span></div>
+      <div class="feat"><b>💾 Backup</b><span>.json + restaurar + exportar nunca perde dados</span></div>
+    </div>
+    <div class="mono">🔑 Acesso Teste Offline: admin@durandtech.com / 123456 • porteiro@condominio.com / 123456 • morador@condominio.com / 123456 • Aceita qualquer e-mail/senha!</div>
+    <div style="margin-top:16px"><a href="https://www.durandtechsysten.com.br" target="_blank" rel="noopener noreferrer" class="inst-btn inst-btn-primary">Ver Demo Ao Vivo</a><a href="https://wa.me/5553997073648?text=Quero%20CondoManager%20PRO" target="_blank" rel="noopener noreferrer" class="inst-btn" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:#fff;margin-left:8px">💬 Comprar no WhatsApp</a></div>
+  </div>
+
+  <!-- STARK AGENDADOR - SEGUNDO, ABAIXO -->
+  <div class="inst-product">
+    <div class="inst-product-top"><div style="display:flex;gap:12px;align-items:center"><div class="inst-icon">🤖</div><div><div style="display:flex;gap:8px;align-items:center"><b>Stark Agendador</b><span style="background:rgba(0,209,255,0.15);border:1px solid rgba(0,209,255,0.3);color:#7DD3FC;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:800">NOVO • API ONLINE 24/7</span></div><small style="color:#7DD3FC">R$97/m • R$847/ano • R$1497 vitalício • UptimeRobot 5min</small></div></div><span style="color:#10b981;font-size:11px;font-weight:700">● ONLINE</span></div>
+    <p style="color:#cbd5e1;font-size:14px;margin-bottom:14px">API REST 24/7 para agendamento automático de Reels no Instagram. Upload, agenda e esquece. Ideal para agências. Documentação Swagger completa.</p>
+    <div class="feat-grid">
+      <div class="feat"><b>📤 POST /upload</b><span>Upload direto de Reels até 100MB + legenda</span></div>
+      <div class="feat"><b>⏰ POST /agendar</b><span>Agenda com data/hora + timezone + publicação automática</span></div>
+      <div class="feat"><b>📋 GET /agendamentos</b><span>Lista, filtra e cancela agendamentos</span></div>
+      <div class="feat"><b>📚 Swagger Docs</b><span>GET stark-agendador.onrender.com/docs + Uptime 24/7</span></div>
+    </div>
+    <div class="mono">GET stark-agendador.onrender.com/docs ● /upload • /agendar • /agendamentos • Suporte Pelotas (53) 99707-3648</div>
+    <div style="margin-top:16px"><a href="https://stark-agendador.onrender.com/docs" target="_blank" rel="noopener noreferrer" class="inst-btn inst-btn-primary">📚 Ver Documentação API ↗</a><a href="https://wa.me/5553997073648?text=Quero%20Stark%20Agendador" target="_blank" rel="noopener noreferrer" class="inst-btn" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:#fff;margin-left:8px">💬 Comprar no WhatsApp</a></div>
+  </div>
+
+</div>
+
+<footer class="footer"><div class="inst-container"><p style="font-size:11px;color:#6b7280">© 2026 Durand Tech System - Otavio Renan Durand Rosa - CNPJ PIX durandtechsysten@gmail.com - Pelotas/RS<br>Sites, Sistemas, APIs, Apps Android e CondoManager PRO • (53) 99707-3648 • @durandtechsysten</p></div></footer>
+</div>
+</body>
+</html>
