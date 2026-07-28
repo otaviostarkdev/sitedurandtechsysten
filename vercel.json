@@ -1,4 +1,15 @@
 {
   "cleanUrls": true,
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api/index.py" }]
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }]
+    }
+  ],
+  "rewrites": [
+    { "source": "/maquina-de-cartao", "destination": "/maquina-de-cartao.html" },
+    { "source": "/portfolio", "destination": "/portfolio.html" },
+    { "source": "/orcamento", "destination": "/orcamento.html" },
+    { "source": "/stark", "destination": "/stark.html" }
+  ]
 }
