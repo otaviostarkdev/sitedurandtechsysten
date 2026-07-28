@@ -1,15 +1,29 @@
 {
   "cleanUrls": true,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }]
-    }
-  ],
   "rewrites": [
-    { "source": "/maquina-de-cartao", "destination": "/maquina-de-cartao.html" },
-    { "source": "/portfolio", "destination": "/portfolio.html" },
-    { "source": "/orcamento", "destination": "/orcamento.html" },
-    { "source": "/stark", "destination": "/stark.html" }
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio.html"
+    },
+    {
+      "source": "/app",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/stark",
+      "destination": "/stark.html"
+    },
+    {
+      "source": "/pricewar",
+      "destination": "/pricewar.html"
+    },
+    {
+      "source": "/orcamento",
+      "destination": "/orcamento.html"
+    },
+    {
+      "source": "/maquina",
+      "destination": "/maquina-de-cartao.html"
+    }
   ]
 }
