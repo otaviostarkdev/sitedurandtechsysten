@@ -95,34 +95,46 @@ body{font-family:Inter,sans-serif;background:#020208;color:#fff;overflow-x:hidde
 <footer style="padding:40px 0;background:#050508;border-top:1px solid rgba(255,255,255,0.06);text-align:center;position:relative;z-index:10;width:100%;clear:both"><div class="inst-container"><div style="display:flex;justify-content:center;gap:20px;margin-bottom:16px"><a href="https://wa.me/5553997073648" style="color:#fff;text-decoration:none">WhatsApp</a><a href="https://t.me/5553997073648" style="color:#fff;text-decoration:none">Telegram</a><a href="https://instagram.com/durandtechsysten" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:none">Instagram @durandtechsysten</a></div><p style="font-size:11px;color:#6b7280">© 2026 Durand Tech System - Otavio Renan Durand Rosa - CNPJ PIX durandtechsysten@gmail.com - Pelotas/RS<br/>Sites, Sistemas, APIs, Apps Android e CondoManager PRO</p></div></footer>
 </div>
 
+</html>
 <div id="durandChatWidget">
   <div id="chatPanelDurand">
-    <div style="background:#0f172a;color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center">
-      <div style="display:flex;gap:8px;align-items:center"><div style="width:36px;height:36px;background:#fff;border-radius:50%;display:grid;place-items:center">🤖</div><div><b>Durand Bot</b><br><small style="color:#10b981">● ONLINE 24/7</small></div></div>
-      <button onclick="toggleChatFix()" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer">×</button>
+    <div style="background:linear-gradient(135deg,#1a0000,#020208);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,0,0,0.2)">
+      <div style="display:flex;gap:10px;align-items:center">
+        <img src="./stark-iron-helmet.png" style="width:42px;height:42px;object-fit:contain;background:#fff;border-radius:12px;padding:2px;border:1px solid #f59e0b"/>
+        <div><div style="font-weight:900;font-size:14px;letter-spacing:-0.5px">STARK • Iron Dev</div><small style="color:#fbbf24;font-weight:700;display:flex;gap:5px;align-items:center"><span style="width:7px;height:7px;background:#10b981;border-radius:50%;display:inline-block;animation:blink 1s infinite"></span> ONLINE 24/7</small></div>
+      </div>
+      <button onclick="toggleChatFix()" style="background:rgba(255,255,255,0.06);border:none;color:#fff;width:28px;height:28px;border-radius:8px;font-size:18px;cursor:pointer">×</button>
     </div>
-    <div id="chatMessagesDurand" style="flex:1;overflow-y:auto;padding:12px;background:#e5ddd5;display:flex;flex-direction:column;gap:8px"></div>
-    <div style="background:#f0f0f0;padding:8px;display:flex;gap:6px"><input id="chatInputDurand" placeholder="Digite..." style="flex:1;padding:10px 14px;border:none;border-radius:20px;outline:none"><button onclick="sendChatFix()" style="width:40px;height:40px;background:#00D1FF;border:none;border-radius:50%;cursor:pointer">➤</button></div>
+    <div id="chatMessagesDurand" style="flex:1;overflow-y:auto;padding:14px;background:radial-gradient(500px at 0% 0%, rgba(239,68,68,0.12), transparent), #0a0a0f;display:flex;flex-direction:column;gap:10px"></div>
+    <div style="background:#0f0f14;padding:10px;border-top:1px solid rgba(255,255,255,0.06)">
+      <div id="quickBtns" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px"></div>
+      <div style="display:flex;gap:8px"><input id="chatInputDurand" placeholder="Fala com o Stark..." style="flex:1;padding:12px 16px;border:1px solid rgba(255,255,255,0.08);border-radius:12px;background:rgba(255,255,255,0.04);color:#fff"><button onclick="sendChatFix()" style="width:42px;height:42px;background:linear-gradient(135deg,#ef4444,#f59e0b);border:none;border-radius:12px;cursor:pointer">➤</button></div>
+    </div>
   </div>
-  <div id="botBubbleDurand" onclick="toggleChatFix()">💬</div>
+  <div id="botBubbleDurand" onclick="toggleChatFix()" style="position:relative;width:66px;height:66px;background:linear-gradient(135deg,#1a0000,#7f1d1d);border-radius:18px;display:grid;place-items:center;cursor:pointer;box-shadow:0 8px 30px rgba(239,68,68,0.5),0 0 0 2px rgba(251,191,36,0.5) inset;animation:whatsPulse 2s infinite;border:1px solid rgba(251,191,36,0.3)">
+    <img src="./stark-iron-helmet.png" style="width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 0 6px rgba(251,191,36,0.8))"/>
+    <div style="position:absolute;top:-3px;right:-3px;width:14px;height:14px;background:#10b981;border-radius:50%;border:2px solid #fff"></div>
+  </div>
 </div>
+<style>
+#durandChatWidget{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:Inter,sans-serif}
+#chatPanelDurand{position:absolute;bottom:78px;right:0;width:380px;height:520px;background:#0a0a0f;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.6);display:none;flex-direction:column;overflow:hidden}
+#chatPanelDurand.open{display:flex !important; animation:chatIn 0.3s}
+@keyframes chatIn{from{transform:translateY(20px) scale(0.96);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+@keyframes whatsPulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,0.7)}70%{box-shadow:0 0 0 16px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.quick-btn{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#fbbf24;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer}
+.quick-btn:hover{background:rgba(239,68,68,0.2)}
+</style>
 <script>
-function toggleChatFix(){
-  const p=document.getElementById('chatPanelDurand');
-  const b=document.getElementById('botBubbleDurand');
-  if(p.classList.contains('open')){p.classList.remove('open'); b.style.display='grid';} else {p.classList.add('open'); b.style.display='none'; const m=document.getElementById('chatMessagesDurand'); if(m.children.length===0) iniciarFix();}
-}
-function iniciarFix(){
-  const m=document.getElementById('chatMessagesDurand'); m.innerHTML='';
-  addBotFix('Olá! Eu sou o Stark da Durand Tech! Tô ONLINE 24/7 🚀');
-  setTimeout(()=>addBotFix('Digite: 1 ORÇAMENTO | 2 Sites | 3 CondoManager | 4 Stark | 5 PIX | 6 WhatsApp'),600);
-}
-function addBotFix(t){const msgs=document.getElementById('chatMessagesDurand'); const row=document.createElement('div'); row.style.display='flex'; row.style.gap='8px'; row.style.maxWidth='92%'; row.innerHTML='<div style="width:28px;height:28px;background:#fff;border-radius:50%;display:grid;place-items:center">🤖</div><div style="background:#fff;color:#303030;border-radius:16px 16px 16px 4px;padding:10px 12px;font-size:13px">'+t+'</div>'; msgs.appendChild(row); msgs.scrollTop=msgs.scrollHeight;}
-function addUserFix(t){const msgs=document.getElementById('chatMessagesDurand'); const d=document.createElement('div'); d.style.marginLeft='auto'; d.style.maxWidth='78%'; d.style.background='linear-gradient(135deg,#00D1FF,#0A84FF)'; d.style.color='#fff'; d.style.padding='9px 12px'; d.style.borderRadius='16px 16px 4px 16px'; d.style.fontSize='13px'; d.innerHTML=t; msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;}
-function responderFix(t){const x=t.toLowerCase(); if(x.includes('orcamento')||x.trim()==='1'){addBotFix('<a href="orcamento.html" target="_blank" rel="noopener noreferrer" target="_blank" style="background:#00D1FF;color:#000;padding:8px 14px;border-radius:20px;text-decoration:none;font-weight:800;display:inline-block">📋 ABRIR ORÇAMENTO</a>'); return;} if(x.includes('pix')){addBotFix('PIX: durandtechsysten@gmail.com'); return;} if(x.includes('whats')||x.includes('zap')){addBotFix('<a href="https://wa.me/5553997073648" target="_blank" style="background:#25D366;color:#fff;padding:8px 14px;border-radius:20px;text-decoration:none">💬 WhatsApp</a>'); return;} addBotFix('Digite 1 orçamento 2 site 3 condo 4 stark 5 pix 6 zap');}
-function sendChatFix(){const i=document.getElementById('chatInputDurand'); const t=i.value.trim(); if(!t) return; addUserFix(t); i.value=''; setTimeout(()=>responderFix(t),400);}
-document.getElementById('chatInputDurand').addEventListener('keypress', function(e){ if(e.key==='Enter') sendChatFix(); });
+function toggleChatFix(){const p=document.getElementById('chatPanelDurand');const b=document.getElementById('botBubbleDurand');if(p.classList.contains('open')){p.classList.remove('open');b.style.display='grid';}else{p.classList.add('open');b.style.display='none';if(document.getElementById('chatMessagesDurand').children.length===0)iniciarFix();}}
+function iniciarFix(){const m=document.getElementById('chatMessagesDurand');m.innerHTML='';addBotFix('Yo Stark! Eu sou o <b>STARK</b> brabo dos devs! 🦾🔥<br><br>Tô ONLINE 24/7 pronto pra fechar projeto!');setTimeout(()=>{addBotFix('O que vamos codar hoje? 👇');showQuickBtns();},600);}
+function showQuickBtns(){document.getElementById('quickBtns').innerHTML='<button class=quick-btn onclick=clickQuick("orcamento")>💰 Orçamento</button><button class=quick-btn onclick=clickQuick("sites")>🌐 Sites</button><button class=quick-btn onclick=clickQuick("condo")>🏢 Condo</button><button class=quick-btn onclick=clickQuick("pix")>💳 PIX</button><button class=quick-btn onclick=clickQuick("zap")>💬 Zap</button>';}
+function clickQuick(t){addUserFix(t);setTimeout(()=>responderFix(t),300);}
+function addBotFix(t){const msgs=document.getElementById('chatMessagesDurand');const row=document.createElement('div');row.style.display='flex';row.style.gap='10px';row.style.maxWidth='88%';row.innerHTML='<img src=./stark-iron-helmet.png style=width:32px;height:32px;object-fit:contain;background:#fff;border-radius:8px;padding:2px;min-width:32px><div style=background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);color:#e5e7eb;border-radius:14px 14px 14px 4px;padding:11px 13px;font-size:13px;line-height:1.5>'+t+'</div>';msgs.appendChild(row);msgs.scrollTop=msgs.scrollHeight;}
+function addUserFix(t){const m=document.getElementById('chatMessagesDurand');const d=document.createElement('div');d.style.marginLeft='auto';d.style.maxWidth='78%';d.style.background='linear-gradient(135deg,#ef4444,#f59e0b)';d.style.color='#fff';d.style.padding='10px 13px';d.style.borderRadius='14px 14px 4px 14px';d.style.fontSize='13px';d.innerHTML=t;m.appendChild(d);m.scrollTop=m.scrollHeight;}
+function responderFix(t){const x=t.toLowerCase();if(x.includes('orcamento')){addBotFix('Bora fechar, Stark! 🚀<br><a href=orcamento.html target=_blank style=background:linear-gradient(135deg,#ef4444,#f59e0b);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:800;display:inline-block;margin-top:6px>📋 ORÇAMENTO →</a>');return;}if(x.includes('pix')){addBotFix('PIX:<div style=background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);padding:10px;border-radius:10px;font-family:monospace;font-weight:800;color:#fbbf24;margin-top:6px>durandtechsysten@gmail.com</div>');return;}if(x.includes('zap')||x.includes('whats')){addBotFix('<a href=https://wa.me/5553997073648 target=_blank style=background:#25D366;color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:800;display:inline-block>💬 Zap Stark</a>');return;}addBotFix('Escolhe um botão aí em cima! 👆');}
+function sendChatFix(){const i=document.getElementById('chatInputDurand');const t=i.value.trim();if(!t)return;addUserFix(t);i.value='';setTimeout(()=>responderFix(t),400);}
 </script>
-
 </body>
 </html>
