@@ -106,6 +106,44 @@ export default function AppPage() {
           </div>
         </div>
       </main>
+
+      {/* MODAL RENOVAÇÃO - quando expira ou faltam 2 dias */}
+      {(daysLeft <= 2 || daysLeft <=0) && user?.plan === 'TRIAL' && (
+        <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md grid place-items-center p-5">
+          <div className="w-full max-w-[440px] p-7 bg-[#12121a] border border-white/10 rounded-[24px] text-center">
+            <div className="text-4xl mb-3">{daysLeft <=0 ? '🔒' : '⏰'}</div>
+            <h2 className="text-xl font-black">{daysLeft <=0 ? 'Seu trial expirou!' : `Faltam ${daysLeft} dias`}</h2>
+            <p className="text-sm text-white/60 mt-2">Para continuar usando o CondoManager PRO sem interrupção:</p>
+            
+            <div className="mt-5 p-4 rounded-xl bg-white/5 border border-white/10 text-left">
+              <div className="text-xs text-white/50">PIX (chave e-mail):</div>
+              <div className="font-mono font-bold text-sm mt-1 flex justify-between items-center">
+                <span>durandtechsysten@gmail.com</span>
+                <button onClick={()=>{navigator.clipboard.writeText('durandtechsysten@gmail.com'); alert('PIX copiado!')}} className="px-3 py-1 rounded-lg bg-[#00D1FF] text-black text-xs font-bold">Copiar</button>
+              </div>
+              <div className="mt-3 text-xs">Valor: <b className="text-white text-sm">R$ 97,00/mês</b></div>
+            </div>
+
+            <div className="mt-4 p-3 rounded-xl bg-[rgba(0,209,255,0.08)] border border-[rgba(0,209,255,0.15)] text-left">
+              <div className="text-xs font-bold text-[#7DD3FC]">📎 Após pagar, envie o comprovante:</div>
+              <div className="text-[12px] text-white/70 mt-1 leading-relaxed">
+                1️⃣ WhatsApp: <b>(53) 99707-3648</b><br/>
+                2️⃣ E-mail: <b>durandtechsysten@gmail.com</b><br/>
+                <span className="text-white/40">Assunto: Comprovante + seu e-mail de cadastro</span>
+              </div>
+            </div>
+
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              <a href={`https://wa.me/5553997073648?text=${encodeURIComponent(`Olá! Paguei o CondoManager PRO - ${user?.email} - Segue comprovante:`)}`} target="_blank" className="py-3 rounded-xl bg-[#25D366] font-bold text-sm">📱 Enviar no WhatsApp</a>
+              <a href={`mailto:durandtechsysten@gmail.com?subject=Comprovante CondoManager PRO - ${user?.email}&body=Olá, segue comprovante de pagamento PIX R$97 - Email cadastro: ${user?.email} - Nome: ${user?.name}`} className="py-3 rounded-xl bg-white/10 border border-white/10 font-bold text-sm">✉️ Enviar por E-mail</a>
+            </div>
+
+            <button onClick={()=>document.querySelector('.fixed.inset-0')?.remove()} className="mt-4 text-xs text-white/30 underline">Continuar usando por enquanto</button>
+            <p className="mt-4 text-[10px] text-white/20">Liberação em até 2h após envio • Suporte (53) 99707-3648</p>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
