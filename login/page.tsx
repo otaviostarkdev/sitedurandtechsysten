@@ -31,14 +31,24 @@ export default function LoginPage() {
     const leads = JSON.parse(localStorage.getItem("durand_leads") || "[]");
     leads.unshift({ name: form.name, email, zap: form.zap, date: new Date().toISOString(), trialUntil });
     localStorage.setItem("durand_leads", JSON.stringify(leads));
-    const msgAdmin = `NOVO CADASTRO - DURAND TECH - Nome: ${form.name} - Email: ${email} - Zap: ${form.zap}`;
-    setTimeout(() => {
-      window.open(`https://wa.me/5553997073648?text=${encodeURIComponent(msgAdmin)}`, "_blank");
-    }, 500);
+    const msgAdmin = `🚀 NOVO CADASTRO - DURAND TECH%0A%0A👤 Nome: ${form.name}%0A📧 Email: ${email}%0A📱 Zap: ${form.zap}%0A📅 ${new Date().toLocaleString('pt-BR')}`;
+    // FIX: cria link real clicavel para burlar bloqueador de popup
+    const link = document.createElement('a');
+    link.href = `https://wa.me/5553997073648?text=${encodeURIComponent(msgAdmin)}`;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    setTimeout(()=>document.body.removeChild(link), 1000);
+    
+    // Fallback: salva tambem pra voce ver em /leads mesmo se popup bloqueado
+    console.log('LEAD NOVO:', { name: form.name, email, zap: form.zap });
+    
     setTimeout(() => {
       setLoading(false);
+      if(!window.open) alert('Lead salvo! Va em /leads para ver. Libere popups para receber no Zap automatico.');
       window.location.href = "/app?welcome=trial";
-    }, 1200);
+    }, 1500);
   };
 
   const handleLogin = (e: React.FormEvent) => {
