@@ -34,9 +34,10 @@ body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidde
 <div style="display:flex;gap:10px;align-items:center;font-weight:800"><div style="width:32px;height:32px;background:#00FF88;border-radius:8px;display:grid;place-items:center;color:#000">D</div> DurandTech<span style="color:#6b7280;font-weight:400">Systen</span></div>
 <div style="display:flex;gap:10px">
 <a href="portfolio.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">📁 Portfólio ↗</a>
+<a href="vendas.html" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(135deg,#00D1FF,#a855f7);color:#fff;text-decoration:none;font-size:13px;padding:10px 16px;border-radius:20px;font-weight:800;box-shadow:0 0 20px rgba(0,209,255,0.3)" class="shine hover-lift">💰 Vendas ↗</a>
 <a href="orcamento.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💰 Orçamento ↗</a>
 <a href="maquina-de-cartao.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💳 Maquininha ↗</a>
-<a href="vendas.html" style="background:#00FF88;color:#000;padding:10px 22px;border-radius:24px;font-weight:800;text-decoration:none;font-size:13px;box-shadow:0 0 20px rgba(0,255,136,0.3)" class="shine hover-lift">Vendas ↗</a>
+<a href="formulario.html" target="_blank" rel="noopener noreferrer" style="background:#00FF88;color:#000;padding:10px 20px;border-radius:24px;font-weight:700;text-decoration:none;font-size:13px" class="shine hover-lift">Fazer Orçamento ↗</a>
 </div>
 </div></header>
 
@@ -47,6 +48,7 @@ body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidde
 <p style="color:#9ca3af;font-size:16px;line-height:1.6;margin-top:20px;max-width:480px">Construção de sites otimizados, responsivos, sistemas, APIs, softwares e apps Android. Focados em performance, SEO e conversão para seu negócio crescer.</p>
 <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
 <a href="portfolio.html" target="_blank" rel="noopener noreferrer" class="glass hover-lift" style="padding:14px 22px;border-radius:24px;color:#fff;text-decoration:none;font-size:14px;font-weight:600">📁 Ver Portfólio Completo ↗</a>
+<a href="vendas.html" target="_blank" rel="noopener noreferrer" class="shine hover-lift" style="padding:14px 22px;border-radius:24px;background:linear-gradient(135deg,#00D1FF,#a855f7);color:#fff;text-decoration:none;font-size:14px;font-weight:700">💰 Vendas - WebSites e Sistemas ↗</a>
 <a href="formulario.html" target="_blank" rel="noopener noreferrer" class="shine hover-lift" style="padding:14px 22px;border-radius:24px;background:#fff;color:#000;text-decoration:none;font-size:14px;font-weight:700">💬 Solicitar Orçamento ↗</a>
 </div>
 <div style="margin-top:20px;font-size:11px;color:#6b7280">✓ PIX durandtechsysten@gmail.com • <a href="https://instagram.com/durandtechsysten" target="_blank" rel="noopener noreferrer" style="color:#00D1FF">Instagram @durandtechsysten ↗</a></div>
@@ -101,6 +103,7 @@ body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidde
 <footer style="border-top:1px solid rgba(255,255,255,0.06);padding:30px;text-align:center;color:#6b7280;font-size:11px">
 © 2026 Durand Tech System - Otavio Renan Durand Rosa - PIX durandtechsysten@gmail.com - Pelotas/RS<br>
 <a href="portfolio.html" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:none">Portfólio</a> • 
+<a href="vendas.html" target="_blank" rel="noopener noreferrer" style="color:#00D1FF;text-decoration:none;font-weight:700">Vendas</a> • 
 <a href="orcamento.html" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:none">Orçamento</a> • 
 <a href="maquina-de-cartao.html" target="_blank" rel="noopener noreferrer" style="color:#10b981;text-decoration:none">Maquininha</a> • 
 <a href="https://instagram.com/durandtechsysten" target="_blank" rel="noopener noreferrer" style="color:#E1306C;text-decoration:none">Instagram @durandtechsysten ↗</a> • 
@@ -114,12 +117,13 @@ document.querySelectorAll('a[href]').forEach(a=>{
     const u=new URL(a.getAttribute('href'), location.href);
     if(u.host!==location.host || a.getAttribute('href').endsWith('.html')){ 
       // Se for .html da lista, garante _blank
-      if(['portfolio.html','orcamento.html','maquina-de-cartao.html','pricewar.html','stark.html','formulario.html'].some(f=>a.href.includes(f))){
+      if(['portfolio.html','vendas.html','orcamento.html','maquina-de-cartao.html','pricewar.html','stark.html','formulario.html'].some(f=>a.href.includes(f))){
         a.target='_blank'; a.rel='noopener noreferrer';
       }
     }
   }catch(e){}
 });
 </script>
+
 </body>
 </html>
