@@ -1,21 +1,17 @@
-# Cria o vercel.json direto na raiz (corrige o 404)
-@"
 {
-  "redirects": [
+  "cleanUrls": true,
+  "rewrites": [
     {
-      "source": "/Landing-Stark-V4-Vendas.html",
-      "destination": "/stark-driver-booster.html",
-      "permanent": true
+      "source": "/stark-driver",
+      "destination": "/stark-driver-booster.html"
     },
     {
-      "source": "/Landing-Stark-V4-Vendas",
-      "destination": "/stark-driver-booster.html",
-      "permanent": true
+      "source": "/pesquisa",
+      "destination": "/stark-pesquisa-pro.html"
+    },
+    {
+      "source": "/cleaner",
+      "destination": "/durandcleaner.html"
     }
   ]
 }
-"@ | Set-Content -Path .\vercel.json -Encoding utf8
-
-# Confere se criou
-dir vercel.json
-type vercel.json
