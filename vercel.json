@@ -1,14 +1,29 @@
-[System.IO.File]::WriteAllText("$PWD\vercel.json", @"
 {
-  "redirects": [
+  "cleanUrls": true,
+  "rewrites": [
     {
-      "source": "/Landing-Stark-V4-Vendas.html",
-      "destination": "/stark-driver-booster.html",
-      "permanent": true
+      "source": "/portfolio",
+      "destination": "/portfolio.html"
+    },
+    {
+      "source": "/app",
+      "destination": "/app.html"
+    },
+    {
+      "source": "/stark",
+      "destination": "/stark.html"
+    },
+    {
+      "source": "/pricewar",
+      "destination": "/pricewar.html"
+    },
+    {
+      "source": "/orcamento",
+      "destination": "/orcamento.html"
+    },
+    {
+      "source": "/maquina",
+      "destination": "/maquina-de-cartao.html"
     }
   ]
 }
-"@)
-
-# 3. Confere se tá válido
-type .\vercel.json
