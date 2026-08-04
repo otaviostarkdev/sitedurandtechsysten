@@ -1,29 +1,62 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*).html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/Garantiapro-Landing-14-Dias",
+      "destination": "/garantiapro.html",
+      "permanent": true
+    },
+    {
+      "source": "/garantiapro-landing-14-dias",
+      "destination": "/garantiapro.html",
+      "permanent": true
+    },
+    {
+      "source": "/Garantiapro-Landing-14-Dias.html",
+      "destination": "/garantiapro.html",
+      "permanent": true
+    },
+    {
+      "source": "/garantiapro-landing-14-dias.html",
+      "destination": "/garantiapro.html",
+      "permanent": true
+    },
     {
       "source": "/portfolio",
-      "destination": "/portfolio.html"
+      "destination": "/portfolio.html",
+      "permanent": true
     },
     {
-      "source": "/app",
-      "destination": "/app.html"
+      "source": "/portifolio",
+      "destination": "/portifolio.html",
+      "permanent": true
     },
     {
-      "source": "/stark",
-      "destination": "/stark.html"
+      "source": "/garantiapro",
+      "destination": "/garantiapro.html",
+      "permanent": true
     },
     {
-      "source": "/pricewar",
-      "destination": "/pricewar.html"
+      "source": "/Garantiapro",
+      "destination": "/garantiapro.html",
+      "permanent": true
     },
     {
-      "source": "/orcamento",
-      "destination": "/orcamento.html"
-    },
-    {
-      "source": "/maquina",
-      "destination": "/maquina-de-cartao.html"
+      "source": "/garantia-pro",
+      "destination": "/garantiapro.html",
+      "permanent": true
     }
   ]
 }
