@@ -4,35 +4,9 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Durand Tech System - Sites, Sistemas e CondoManager PRO | Pelotas RS</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidden}
-.glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.08)}
-.glass-strong{background:rgba(255,255,255,0.06);backdrop-filter:blur(32px);border:1px solid rgba(255,255,255,0.10)}
-.shine{position:relative;overflow:hidden}
-.shine::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.6s}
-.shine:hover::after{left:100%}
-.hover-lift{transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
-.hover-lift:hover{transform:translateY(-6px);border-color:rgba(0,255,136,0.3);box-shadow:0 20px 40px rgba(0,0,0,0.4)}
-.blink{animation:blink 1s infinite}@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
-.topbar{border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.5);backdrop-filter:blur(20px);padding:8px 0;font-size:11px;letter-spacing:0.5px;color:#9ca3af;text-align:center}
-.nav{position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.6);backdrop-filter:blur(20px)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
-.hero{max-width:1200px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-@media(max-width:900px){.hero{grid-template-columns:1fr}}
-.orb{position:fixed;pointer-events:none;border-radius:50%;filter:blur(120px)}
-#code-card{border-radius:20px;padding:24px;position:relative;overflow:hidden;box-shadow:0 0 50px rgba(0,255,136,0.15);animation:cardFloat 6s ease-in-out infinite, borderGlow 3s ease-in-out infinite;height:342px;min-height:342px;max-height:342px;display:flex;flex-direction:column}
-#terminal{font-family:JetBrains Mono;font-size:13px;line-height:1.8;height:280px;min-height:280px;display:flex;flex-direction:column;justify-content:flex-start}
-@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes borderGlow{0%,100%{border-color:rgba(255,255,255,0.10)}50%{border-color:rgba(0,255,136,0.25)}}
-@keyframes scanline{0%{left:-100%}100%{left:100%}}
-@keyframes dotPulse{0%,100%{opacity:1}50%{opacity:0.5}}
-@keyframes typeIn{0%{transform:translateY(4px);opacity:0}100%{transform:translateY(0);opacity:1}}
-@keyframes checkPop{0%{transform:translateX(-10px);opacity:0}100%{transform:translateX(0);opacity:1}}
-.check{opacity:0;transform:translateX(-8px);transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
-.check.visible{opacity:1!important;transform:translateX(0);animation:checkPop 0.4s ease}
-.progress-bar{width:0;height:2px;background:linear-gradient(90deg,#00FF88,#00D1FF);transition:width 0.3s ease;margin-top:4px;border-radius:2px}
-</style>
+
+  <link rel="stylesheet" href="durandtech.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="orb" style="top:-10%;left:-10%;width:600px;height:600px;background:#00FF88;opacity:0.08"></div>
@@ -43,10 +17,9 @@ body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidde
 <header class="nav"><div class="nav-inner">
 <div style="display:flex;gap:10px;align-items:center;font-weight:800"><div style="width:32px;height:32px;background:#00FF88;border-radius:8px;display:grid;place-items:center;color:#000">D</div> DurandTech<span style="color:#6b7280;font-weight:400">Systen</span></div>
 <div style="display:flex;gap:10px">
-<a href="portfolio.html" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">📁 Portfólio ↗</a>
-<a href="orcamento.html" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💰 Orçamento ↗</a>
-<a href="maquina-de-cartao.html" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💳 Maquininha ↗</a>
-</div>
+<a href="portfolio.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">📁 Portfólio ↗</a>
+<a href="orcamento.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💰 Orçamento ↗</a>
+<a href="maquina-de-cartao.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💳 Maquininha ↗</a></div>
 </div></header>
 
 <section class="hero">

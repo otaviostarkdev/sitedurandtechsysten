@@ -1,28 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Durand Tech System - Sites, Sistemas e CondoManager PRO | Pelotas RS</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidden}
-.glass{background:rgba(255,255,255,0.04);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.08)}
-.glass-strong{background:rgba(255,255,255,0.06);backdrop-filter:blur(32px);border:1px solid rgba(255,255,255,0.10)}
-.shine{position:relative;overflow:hidden}
-.shine::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.6s}
-.shine:hover::after{left:100%}
-.hover-lift{transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
-.hover-lift:hover{transform:translateY(-6px);border-color:rgba(0,255,136,0.3);box-shadow:0 20px 40px rgba(0,0,0,0.4)}
-.blink{animation:blink 1s infinite}@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
-.topbar{border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.5);backdrop-filter:blur(20px);padding:8px 0;font-size:11px;letter-spacing:0.5px;color:#9ca3af;text-align:center}
-.nav{position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.6);backdrop-filter:blur(20px)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
-.hero{max-width:1200px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-@media(max-width:900px){.hero{grid-template-columns:1fr}}
-.orb{position:fixed;pointer-events:none;border-radius:50%;filter:blur(120px)}
-</style>
+
+  <link rel="stylesheet" href="durandtech.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="orb" style="top:-10%;left:-10%;width:600px;height:600px;background:#00FF88;opacity:0.08"></div>
@@ -33,11 +17,9 @@ body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidde
 <header class="nav"><div class="nav-inner">
 <div style="display:flex;gap:10px;align-items:center;font-weight:800"><div style="width:32px;height:32px;background:#00FF88;border-radius:8px;display:grid;place-items:center;color:#000">D</div> DurandTech<span style="color:#6b7280;font-weight:400">Systen</span></div>
 <div style="display:flex;gap:10px">
-<a href="portfolio.html" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">📁 Portfólio ↗</a>
-<a href="orcamento.html" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💰 Orçamento ↗</a>
-<a href="maquina-de-cartao.html" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💳 Maquininha ↗</a>
-<a href="vendas.html" style="background:#00FF88;color:#000;padding:10px 22px;border-radius:24px;font-weight:800;text-decoration:none;font-size:13px;box-shadow:0 0 20px rgba(0,255,136,0.3)" class="shine hover-lift">Vendas ↗</a>
-</div>
+<a href="portfolio.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">📁 Portfólio ↗</a>
+<a href="orcamento.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💰 Orçamento ↗</a>
+<a href="maquina-de-cartao.html" target="_blank" rel="noopener noreferrer" style="color:#9ca3af;text-decoration:none;font-size:13px;padding:10px 16px" class="glass hover-lift">💳 Maquininha ↗</a></div>
 </div></header>
 
 <section class="hero">
@@ -52,43 +34,39 @@ body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidde
 <div style="margin-top:20px;font-size:11px;color:#6b7280">✓ PIX durandtechsysten@gmail.com • <a href="https://instagram.com/durandtechsysten" target="_blank" rel="noopener noreferrer" style="color:#00D1FF">Instagram @durandtechsysten ↗</a></div>
 </div>
 
-<div class="glass-strong" id="code-card" style="border-radius:20px;padding:24px;position:relative;overflow:hidden;box-shadow:0 0 50px rgba(0,255,136,0.15);animation:cardFloat 6s ease-in-out infinite, borderGlow 3s ease-in-out infinite">
+<!-- TERMINAL COMPLETO COM WHATSAPP - MESMO TAMANHO -->
+<div class="glass-strong" id="code-card">
 <div style="position:absolute;top:0;left:-100%;width:100%;height:2px;background:linear-gradient(90deg,transparent,#00FF88,transparent);animation:scanline 2.5s linear infinite"></div>
 <div style="display:flex;gap:6px;margin-bottom:16px"><div style="width:10px;height:10px;border-radius:50%;background:#ef4444;box-shadow:0 0 10px rgba(239,68,68,0.5);animation:dotPulse 2s infinite"></div><div style="width:10px;height:10px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px rgba(245,158,11,0.5);animation:dotPulse 2s infinite 0.3s"></div><div style="width:10px;height:10px;border-radius:50%;background:#10b981;box-shadow:0 0 10px rgba(16,185,129,0.5);animation:dotPulse 2s infinite 0.6s"></div></div>
-<div style="font-family:JetBrains Mono;font-size:13px;line-height:1.8" id="terminal">
+<div id="terminal">
 <div style="color:#6b7280"><span id="line0"></span></div>
-<div><span id="line1"></span><span class="blink">_</span></div>
-<div style="color:#00FF88;margin-top:8px;opacity:0" id="buildLine">> Building optimized site...</div>
+<div><span id="line1"></span><span id="cursor" class="blink" style="background:#00FF88;color:#000;padding:0 2px">_</span></div>
+<div style="color:#00FF88;margin-top:8px;opacity:0;transition:opacity 0.3s" id="buildLine">> Building optimized site...<div class="progress-bar" id="progress"></div></div>
 <div style="margin-top:12px;color:#cbd5e1" id="checkLines">
-<div style="opacity:0" class="check">✓ <span style="color:#fff">Sites responsivos</span> <span style="color:#00FF88">100%</span></div>
-<div style="opacity:0" class="check">✓ Sistemas escaláveis</div>
-<div style="opacity:0" class="check">✓ APIs REST seguras</div>
-<div style="opacity:0" class="check">✓ Apps Android nativos</div>
-<div style="opacity:0" class="check"><span style="color:#FFD700">✓ CondoManager PRO v2.6</span></div>
+<div class="check">✓ <span style="color:#fff">Sites responsivos</span> <span style="color:#00FF88">100%</span></div>
+<div class="check">✓ Sistemas escaláveis</div>
+<div class="check">✓ APIs REST seguras</div>
+<div class="check">✓ Apps Android nativos</div>
+<div class="check"><span style="color:#FFD700">✓ CondoManager PRO v2.6</span></div>
 </div>
-<div style="color:#00FF88;margin-top:12px;opacity:0" id="deployLine">$ Deploy: durandtechsysten.com.br 🚀</div>
+<div style="color:#00FF88;margin-top:10px;opacity:0;transition:all 0.5s ease;transform:translateY(10px)" id="deployLine">$ Deploy: durandtechsysten.com.br 🚀</div>
+<div style="margin-top:10px;opacity:0;transition:all 0.5s ease 0.2s;transform:translateY(10px)" id="whatsappLine">
+<div style="display:flex;align-items:center;gap:8px;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);border-radius:8px;padding:8px 12px">
+<span style="color:#00FF88">❯</span>
+<span style="color:#9ca3af">whatsapp:</span>
+<a href="https://wa.me/5553997073648" target="_blank" style="color:#00FF88;text-decoration:none;font-weight:700">53 99707-3648</a>
+<span class="blink" style="width:8px;height:14px;background:#00FF88;display:inline-block;margin-left:4px"></span>
 </div>
 </div>
-<style>
-@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes borderGlow{0%,100%{border-color:rgba(255,255,255,0.1);box-shadow:0 0 50px rgba(0,255,136,0.1)}50%{border-color:rgba(0,255,136,0.3);box-shadow:0 0 80px rgba(0,255,136,0.25)}}
-@keyframes scanline{0%{left:-100%}100%{left:100%}}
-@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(0.9)}}
-@keyframes typeIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
-.check{animation:typeIn 0.4s ease forwards}
-</style>
+</div>
+</div>
 </section>
 
-
-<section style="max-width:1200px;margin:0 auto;padding:40px 24px">
-<h2 style="font-size:28px;font-weight:900">Serviços que escalam seu negócio</h2>
-<p style="color:#6b7280;font-size:13px;margin-top:6px">Do site institucional ao sistema complexo, tudo com código limpo e performance</p>
-<div style="margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
-<div class="glass hover-lift" style="border-radius:16px;padding:20px"><div>🌐</div><b style="display:block;margin-top:10px;font-size:14px">Sites Otimizados</b><span style="color:#9ca3af;font-size:12px">Sites ultra rápidos, SEO otimizado, 100/100 PageSpeed</span></div>
-<div class="glass hover-lift" style="border-radius:16px;padding:20px"><div>📱</div><b style="display:block;margin-top:10px;font-size:14px">Sites Responsivos</b><span style="color:#9ca3af;font-size:12px">Mobile-first de verdade, adapta em tudo</span></div>
-<div class="glass hover-lift" style="border-radius:16px;padding:20px;border-color:rgba(0,255,136,0.25)"><div>✨</div><b style="display:block;margin-top:10px;font-size:14px">Sites Modernos</b><span style="color:#9ca3af;font-size:12px">Design 2026, dark mode, glassmorphism, micro-interações</span></div>
-<div class="glass hover-lift" style="border-radius:16px;padding:20px"><div>⚙️</div><b style="display:block;margin-top:10px;font-size:14px">Desenvolvimento de Sistemas</b><span style="color:#9ca3af;font-size:12px">ERPs, CRMs, dashboards sob medida</span></div>
-<div class="glass hover-lift" style="border-radius:16px;padding:20px"><div>🔌</div><b style="display:block;margin-top:10px;font-size:14px">APIs e Integrações</b><span style="color:#9ca3af;font-size:12px">PIX, WhatsApp, gateways e qualquer serviço</span></div>
+<section style="max-width:1200px;margin:0 auto;padding:0 24px 20px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+<div class="glass hover-lift" style="border-radius:16px;padding:20px"><div>🌐</div><b style="display:block;margin-top:10px;font-size:14px">Sites Otimizados</b><span style="color:#9ca3af;font-size:12px">Responsivos, SEO, alta conversão e velocidade</span></div>
+<div class="glass hover-lift" style="border-radius:16px;padding:20px"><div>⚙️</div><b style="display:block;margin-top:10px;font-size:14px">Sistemas Web</b><span style="color:#9ca3af;font-size:12px">Painéis, ERPs, SaaS, CondoManager PRO</span></div>
+<div class="glass hover-lift" style="border-radius:16px;padding:20px"><div>🔌</div><b style="display:block;margin-top:10px;font-size:14px">APIs & Integrações</b><span style="color:#9ca3af;font-size:12px">REST seguras, pagamentos, automações</span></div>
 <div class="glass hover-lift" style="border-radius:16px;padding:20px"><div>🤖</div><b style="display:block;margin-top:10px;font-size:14px">Apps Android</b><span style="color:#9ca3af;font-size:12px">Nativos e híbridos, publicamos na Play Store</span></div>
 </div>
 </section>
@@ -134,64 +112,72 @@ body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidde
 </footer>
 
 <script>
-// Animação Terminal Digitando
 const line0Text = "durandtech@server:~";
 const line1Text = "$ npm run build:durandtech";
 const line0 = document.getElementById('line0');
 const line1 = document.getElementById('line1');
 const buildLine = document.getElementById('buildLine');
+const progress = document.getElementById('progress');
 const checks = document.querySelectorAll('.check');
 const deployLine = document.getElementById('deployLine');
-
-function typeWriter(element, text, speed, callback){
-  let i=0;
-  element.textContent='';
-  function type(){
-    if(i < text.length){
-      element.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    } else if(callback) callback();
-  }
-  type();
-}
-
-function startTerminal(){
-  typeWriter(line0, line0Text, 40, () => {
-    setTimeout(() => {
-      typeWriter(line1, line1Text, 50, () => {
-        setTimeout(() => {
-          buildLine.style.transition='opacity 0.3s';
-          buildLine.style.opacity='1';
-          // anima checks um por um
-          checks.forEach((el, idx) => {
-            setTimeout(() => {
-              el.style.opacity='1';
-            }, idx*300 + 200);
-          });
-          // deploy no final
-          setTimeout(() => {
-            deployLine.style.transition='opacity 0.3s';
-            deployLine.style.opacity='1';
-            deployLine.style.animation='typeIn 0.5s ease';
-          }, checks.length*300 + 500);
-        }, 300);
-      });
-    }, 400);
+const whatsappLine = document.getElementById('whatsappLine');
+const cursor = document.getElementById('cursor');
+function typeWriter(element, text, speed){
+  return new Promise(resolve => {
+    let i=0;
+    element.textContent='';
+    cursor.style.display='inline';
+    function type(){
+      if(i < text.length){
+        element.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else { resolve(); }
+    }
+    type();
   });
 }
-
-// loop a cada 8s
-startTerminal();
-setInterval(() => {
+function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
+async function animateBuild(){
+  buildLine.style.opacity='1';
+  for(let p=0;p<=100;p+=4){
+    progress.style.width = p+'%';
+    await sleep(18);
+  }
+}
+async function startTerminal(){
   line0.textContent=''; line1.textContent='';
   buildLine.style.opacity='0';
-  checks.forEach(c=>c.style.opacity='0');
+  progress.style.width='0%';
+  checks.forEach(c=>c.classList.remove('visible'));
   deployLine.style.opacity='0';
-  setTimeout(startTerminal, 500);
-}, 9000);
-
-// Links limpos - sem forcar _blank nos internos
+  deployLine.style.transform='translateY(10px)';
+  whatsappLine.style.opacity='0';
+  whatsappLine.style.transform='translateY(10px)';
+  cursor.style.display='inline';
+  await typeWriter(line0, line0Text, 38);
+  await sleep(280);
+  await typeWriter(line1, line1Text, 42);
+  await sleep(220);
+  cursor.style.display='none';
+  await animateBuild();
+  for(let idx=0; idx<checks.length; idx++){
+    await sleep(200);
+    checks[idx].classList.add('visible');
+  }
+  await sleep(350);
+  deployLine.style.opacity='1';
+  deployLine.style.transform='translateY(0)';
+  await sleep(300);
+  whatsappLine.style.opacity='1';
+  whatsappLine.style.transform='translateY(0)';
+  await sleep(3500);
+  deployLine.style.opacity='0.3';
+  whatsappLine.style.opacity='0.3';
+  await sleep(400);
+  startTerminal();
+}
+startTerminal();
 </script>
 </body>
 </html>
