@@ -1,21 +1,14 @@
-# Cria o vercel.json direto na raiz (corrige o 404)
-@"
+[System.IO.File]::WriteAllText("$PWD\vercel.json", @"
 {
   "redirects": [
     {
       "source": "/Landing-Stark-V4-Vendas.html",
       "destination": "/stark-driver-booster.html",
       "permanent": true
-    },
-    {
-      "source": "/Landing-Stark-V4-Vendas",
-      "destination": "/stark-driver-booster.html",
-      "permanent": true
     }
   ]
 }
-"@ | Set-Content -Path .\vercel.json -Encoding utf8
+"@)
 
-# Confere se criou
-dir vercel.json
-type vercel.json
+# 3. Confere se tá válido
+type .\vercel.json
