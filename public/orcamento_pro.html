@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orçamento em 60s | Durand Tech System - Sites e SaaS</title>
+<meta name="description" content="Orce seu site ou SaaS em 60 segundos. Calculadora automática com preço na hora e fechamento direto no WhatsApp. Pelotas/RS e Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box} body{background:#050507;color:#fff;font-family:Inter,sans-serif;overflow-x:hidden}
+.mono{font-family:JetBrains Mono,monospace}
+.nav{position:sticky;top:0;z-index:50;background:rgba(5,5,7,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.glass{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(16px)}
+.chat-wrap{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:18px;padding:28px 20px 40px}
+@media(max-width:900px){.chat-wrap{grid-template-columns:1fr}}
+.chat-card{background:#0C0C0E;border:1px solid rgba(255,255,255,0.10);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;height:680px;max-height:78vh}
+.c-head{height:56px;display:flex;justify-content:space-between;align-items:center;padding:0 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.c-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:radial-gradient(500px 300px at 80% 0%, rgba(0,255,136,0.07), transparent), #0C0C0E}
+.bubble{max-width:86%;padding:11px 13px;border-radius:14px;font-size:13.5px;line-height:1.5}
+.bubble.bot{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);color:#e5e7eb;border-bottom-left-radius:4px}
+.bubble.user{background:#00FF88;color:#000;font-weight:700;align-self:flex-end;border-bottom-right-radius:4px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.chip{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);color:#d1d5db;font-size:12px;cursor:pointer}
+.chip:hover{background:rgba(255,255,255,0.10)} .chip.sel{background:#00FF88;color:#000;font-weight:800;border-color:#00FF88}
+.input-area{padding:12px;border-top:1px solid rgba(255,255,255,0.06);display:flex;gap:8px}
+.input{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);color:#fff;border-radius:999px;padding:11px 14px;outline:none;font-size:13px}
+.input:focus{border-color:#00FF88}
+.send{width:42px;height:42px;border-radius:999px;background:#00FF88;border:0;cursor:pointer;font-weight:900}
+.progress{height:3px;background:rgba(255,255,255,0.08)} .progress i{display:block;height:100%;background:#00FF88;transition:width .3s}
+.summary-card{background:linear-gradient(180deg, rgba(0,255,136,0.10), rgba(255,255,255,0.02));border:1px solid rgba(0,255,136,0.20);border-radius:18px;padding:18px}
+</style>
+</head>
+<body>
+
+<header class="nav"><div style="max-width:1240px;margin:0 auto;padding:0 20px;height:64px;display:flex;justify-content:space-between;align-items:center">
+<a href="index.html" style="display:flex;gap:10px;align-items:center;text-decoration:none;color:#fff;font-weight:700"><div style="width:32px;height:32px;background:#00FF88;border-radius:9px;display:grid;place-items:center;color:#000;font-weight:900">D</div> DurandTech <span style="color:#6b7280;font-weight:500">Systen</span></a>
+<nav class="mono" style="display:flex;gap:12px;font-size:12px">
+<a href="garantecell.html" target="_blank" style="color:#9ca3af;text-decoration:none">🛡️ GarantiaPro</a>
+<a href="portfolio.html" target="_blank" style="color:#9ca3af;text-decoration:none">📁 Portfólio</a>
+<a href="maquina-de-cartao.html" target="_blank" style="color:#9ca3af;text-decoration:none">💰 Máquina Ton</a>
+</nav>
+</div></header>
+
+<div style="max-width:980px;margin:0 auto;padding:18px 20px 0" class="mono"><div style="font-size:11px;color:#6b7280">● Pelotas/RS • Orçamento instantâneo • Resposta em até 15min no WhatsApp</div></div>
+
+<div class="chat-wrap">
+<div class="chat-card">
+<div class="c-head"><div style="display:flex;gap:10px;align-items:center"><div style="width:28px;height:28px;background:#00FF88;border-radius:8px;display:grid;place-items:center;color:#000;font-weight:900">D</div><div><div style="font-weight:700;font-size:13px">DurandBot • Orçamento 60s</div><div style="font-size:10px;color:#6b7280" class="mono">calcula e fecha no WhatsApp</div></div></div><div id="price" class="mono" style="font-size:12px;color:#00FF88;font-weight:700"></div></div>
+<div class="progress"><i id="bar" style="width:0%"></i></div>
+<div id="body" class="c-body"></div>
+<div class="input-area"><input id="input" class="input mono" placeholder="Digite seu nome e pressione Enter..." autofocus autocomplete="off"/><button id="send" class="send">↗</button></div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="summary-card">
+<div class="mono" style="font-size:11px;letter-spacing:0.12em;color:#00FF88">RESUMO AO VIVO</div>
+<div id="sum" style="margin-top:12px;font-size:13px;line-height:1.6;color:#d1d5db" class="mono">Preencha o chat ao lado para calcular...</div>
+<div id="cta-area" style="margin-top:16px;display:none"><a id="wa-link" href="#" target="_blank" style="display:flex;justify-content:center;background:#00FF88;color:#000;padding:12px;border-radius:999px;text-decoration:none;font-weight:800;font-size:13px">💬 Fechar no WhatsApp →</a><div style="margin-top:8px;text-align:center;font-size:11px;color:#6b7280" class="mono">Vai direto pro (53) 99707-3648 com tudo preenchido</div></div>
+</div>
+<div class="glass" style="border-radius:16px;padding:16px">
+<div style="font-weight:700;font-size:13px">O que inclui?</div><div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;font-size:12px;color:#9ca3af" class="mono"><span>✓ Código próprio (Next.js / Node)</span><span>✓ Deploy Vercel + domínio</span><span>✓ SEO técnico + Lighthouse 90+</span><span>✓ Suporte 30 dias no WhatsApp</span><span>✓ PIX durandtechsysten@gmail.com</span></div>
+</div>
+<div class="glass" style="border-radius:16px;padding:16px"><div style="font-weight:700;font-size:13px">Projetos que já faturam</div><div style="margin-top:8px;font-size:12px;color:#9ca3af" class="mono">CondoManager PRO e Durand Lex rodando em produção com clientes pagantes.</div></div>
+</div>
+</div>
+
+<script>
+const PROJECTS=[{id:'institucional',label:'Site Institucional',price:1497},{id:'landing',label:'Landing Alta Conversão',price:997,badge:'MAIS VENDIDA'},{id:'ecommerce',label:'E-commerce',price:2497},{id:'saas',label:'SaaS / Sistema',price:4997,rec:297},{id:'condo',label:'CondoManager PRO / Durand Lex',price:497,rec:197}];
+const FEATURES=[{id:'paginas',label:'Páginas extras',price:300},{id:'blog',label:'Blog / CMS',price:300},{id:'seo',label:'SEO Avançado',price:500,pop:1},{id:'area',label:'Área cliente',price:800},{id:'pag',label:'Pagamento online',price:800,pop:1},{id:'copy',label:'Copy',price:400},{id:'integra',label:'Integração',price:300},{id:'prod',label:'Produtos',price:500},{id:'api',label:'API / Webhooks',price:1200},{id:'app',label:'App Android',price:1500,pop:1},{id:'modulo',label:'Módulo SaaS extra',price:1500}];
+const DEADLINES=[{id:'urgente',label:'Urgente 7 dias (+30%)',mult:1.3},{id:'normal',label:'Normal 15 dias',mult:1},{id:'tranquilo',label:'Tranquilo 30 dias (-10%)',mult:0.9}];
+const BUDGETS=['Até R$ 1.5k','R$ 1.5k - 3k','R$ 3k - 5k','R$ 5k - 10k+','Tenho recorrência SaaS'];
+let state={name:'',project:null,features:[],deadline:null,budget:'',step:0};
+const body=document.getElementById('body'), input=document.getElementById('input'), priceEl=document.getElementById('price'), bar=document.getElementById('bar'), sum=document.getElementById('sum'), cta=document.getElementById('cta-area'), waLink=document.getElementById('wa-link');
+
+function calc(){ if(!state.project) return {final:0,rec:0,sub:0}; let sub=state.project.price + state.features.reduce((s,fid)=>{let f=FEATURES.find(x=>x.id==fid);return s+(f?f.price:0)},0); let mult=state.deadline?state.deadline.mult:1; let final=Math.round(sub*mult); let rec=state.project.rec||0; if(state.features.includes('modulo')) rec+=97; return {sub,final,rec}; }
+function update(){ let {final,rec,sub}=calc(); priceEl.textContent=final?`R$ ${final.toLocaleString('pt-BR')}`:''; let prog=0; if(state.name) prog+=20; if(state.project) prog+=20; if(state.features.length) prog+=20; if(state.deadline) prog+=20; if(state.budget) prog+=20; bar.style.width=prog+'%';
+  let featLabels=state.features.map(fid=>FEATURES.find(f=>f.id==fid)?.label).join(', ')||'—';
+  sum.innerHTML=`<div>👤 ${state.name||'—'}</div><div>📦 ${state.project?state.project.label:'—'}</div><div>✨ ${featLabels}</div><div>⏱ ${state.deadline?state.deadline.label:'—'}</div><div>💳 ${state.budget||'—'}</div><hr style='margin:10px 0;border:0;border-top:1px solid rgba(255,255,255,0.08)'><div style='font-weight:800;color:#fff'>💰 R$ ${final?final.toLocaleString('pt-BR'):'0'} ${rec?`+ R$ ${rec}/mês`:''}</div><div style='font-size:11px;color:#6b7280'>Subtotal R$ ${sub.toLocaleString('pt-BR')} ${state.deadline?`× ${state.deadline.mult}`:''} • PIX -10% = R$ ${Math.round(final*0.9).toLocaleString('pt-BR')}</div>`;
+  if(state.step>=5){ let pix=Math.round(final*0.9); let parc=(final/12).toFixed(2).replace('.',','); let msg=`Olá Otávio! Sou ${state.name}, quero fechar ${state.project.label} pela DurandTech 🚀
+
+📋 DETALHES:
+• Projeto: ${state.project.label}
+• Features: ${featLabels}
+• Prazo: ${state.deadline.label}
+• Budget: ${state.budget}
+
+💰 INVESTIMENTO:
+• Valor: R$ ${final.toLocaleString('pt-BR')}
+• PIX 10% OFF: R$ ${pix.toLocaleString('pt-BR')}
+• Parcelado: 12x R$ ${parc}${rec?`
+• Recorrência: R$ ${rec}/mês`:''}
+
+Bora fechar hoje?`; waLink.href=`https://wa.me/5553997073648?text=${encodeURIComponent(msg)}`; cta.style.display='block'; }
+}
+function addBot(t,chips){ let b=document.createElement('div'); b.className='bubble bot'; b.textContent=t; body.appendChild(b); if(chips){ let c=document.createElement('div'); c.className='chips'; chips.forEach(ch=>{ let btn=document.createElement('button'); btn.className='chip mono'; btn.textContent=ch; btn.onmousedown=e=>e.preventDefault(); btn.onclick=()=>handleChip(ch); c.appendChild(btn); }); body.appendChild(c);} body.scrollTop=body.scrollHeight; setTimeout(()=>input.focus(),40); }
+function addUser(t){ let b=document.createElement('div'); b.className='bubble user'; b.textContent=t; body.appendChild(b); body.scrollTop=body.scrollHeight; }
+function handleChip(ch){
+  if(state.step==1){ let p=PROJECTS.find(x=>x.label==ch); if(p){ state.project=p; addUser(ch); state.step=2; setTimeout(()=>askFeatures(),400); update(); return; } }
+  if(state.step==2){ if(ch=='Continuar →'){ state.step=3; addUser('Continuar'); setTimeout(()=>askDeadline(),400); update(); return; } let f=FEATURES.find(x=>x.label==ch); if(f){ if(!state.features.includes(f.id)) state.features.push(f.id); else state.features=state.features.filter(x=>x!=f.id); update(); return; } }
+  if(state.step==3){ let dl=DEADLINES.find(x=>x.label==ch); if(dl){ state.deadline=dl; addUser(ch); state.step=4; setTimeout(()=>askBudget(),400); update(); return; } }
+  if(state.step==4){ if(BUDGETS.includes(ch)){ state.budget=ch; addUser(ch); state.step=5; setTimeout(()=>showResult(),400); update(); return; } }
+}
+function askName(){ addBot('Fala! Sou o DurandBot 🤖 Bora orçar em 60s? Qual seu nome?'); state.step=0; }
+function askProject(){ addBot(`Boa, ${state.name}! O que você quer criar?`, PROJECTS.map(p=>p.label)); state.step=1; }
+function askFeatures(){ addBot('Marca os extras (pode marcar vários) e clica Continuar:', [...FEATURES.map(f=>f.label),'Continuar →']); state.step=2; }
+function askDeadline(){ addBot('Qual prazo?', DEADLINES.map(d=>d.label)); state.step=3; }
+function askBudget(){ addBot('Faixa de investimento?', BUDGETS); state.step=4; }
+function showResult(){ let {final,rec}=calc(); let pix=Math.round(final*0.9); let parc=(final/12).toFixed(2).replace('.',','); addBot(`✅ FECHADO, ${state.name}! Investimento R$ ${final.toLocaleString('pt-BR')} (PIX R$ ${pix.toLocaleString('pt-BR')} ou 12x R$ ${parc}) ${rec?`+ R$ ${rec}/mês`:''}. Clica no botão verde ao lado pra fechar no WhatsApp e garantir sua vaga.`); update(); }
+
+function handleInput(){ let v=input.value.trim(); if(!v) return; if(state.step==0){ state.name=v; addUser(v); input.value=''; setTimeout(()=>askProject(),500); update(); } }
+document.getElementById('send').onclick=handleInput;
+input.addEventListener('keydown',e=>{ if(e.key=='Enter') handleInput(); });
+askName(); update();
+setInterval(()=>input.focus(), 800);
+</script>
+</body>
+</html>

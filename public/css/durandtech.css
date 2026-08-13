@@ -1,8 +1,7 @@
 /* ========================================================================
-   DURAND TECH SYSTEN - FINAL UNIFICADO v3
+   DURAND TECH SYSTEN - FINAL UNIFICADO v3 - COM FIX CARDS IGUAIS
    15 páginas em 1 arquivo só - 100% cobertura
-   Substitui ~12MB de CSS repetido por 18kb
-   Criado: 04/08/2026 - Pelotas/RS
+   Criado: 04/08/2026 - Pelotas/RS - Corrigido: Cards padronizados
    ======================================================================== */
 @layer reset, tokens, base, layout, glass, buttons, cards, forms, products, effects, utilities;
 
@@ -81,18 +80,79 @@
 @layer cards{
   .feature-card{border-radius:16px;padding:20px;transition:transform .3s var(--ease),border-color .3s}
   .feature-card:hover{transform:translateY(-4px)}
-  .inst-product{background:#111113;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px;transition:.3s;position:relative;overflow:hidden;margin-bottom:28px;max-width:900px;margin-left:auto;margin-right:auto}
+
+  /* ===== FIX ORGANIZAÇÃO - CARDS MESMO TAMANHO ===== */
+  .inst-container{ display:flex !important; flex-direction:column !important; gap:24px !important; }
+
+  .inst-product{
+    background:#111113;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:32px;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+    max-width:900px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:0;
+    display:flex;
+    flex-direction:column;
+    min-height:540px;
+    height:auto;
+    justify-content:space-between;
+  }
   .inst-product:hover{transform:translateY(-3px);border-color:rgba(0,209,255,.25)}
-  .inst-product.featured{border:2px solid #00D1FF;background:linear-gradient(180deg,rgba(0,209,255,.12),rgba(17,17,19,1));box-shadow:var(--shadow-blue)}
-  .inst-product-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:12px}
-  .inst-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(0,209,255,.2),rgba(10,132,255,.2));border:1px solid rgba(0,209,255,.2);border-radius:14px;display:grid;place-items:center;font-size:26px}
+  .inst-product.featured{
+    border:2px solid #00D1FF;
+    background:linear-gradient(180deg,rgba(0,209,255,.12),rgba(17,17,19,1));
+    box-shadow:var(--shadow-blue);
+    min-height:600px;
+  }
+  .inst-product-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+    gap:12px;
+    min-height:72px;
+  }
+  .inst-product > p{
+    flex:1 1 auto;
+    min-height:72px;
+    color:#cbd5e1;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:8px;
+  }
+  .inst-icon{width:52px;height:52px;background:linear-gradient(135deg,rgba(0,209,255,.2),rgba(10,132,255,.2));border:1px solid rgba(0,209,255,.2);border-radius:14px;display:grid;place-items:center;font-size:26px;flex-shrink:0}
   .inst-card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:24px;transition:.3s}
   .inst-card:hover{transform:translateY(-4px);border-color:rgba(168,85,247,.3)}
-  .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0}
-  .feat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px 14px}
-  .feat b{display:block;font-size:13px;margin-bottom:2px;color:#fff}
-  .feat span{font-size:12px;color:var(--muted)}
+
+  .feat-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin:20px 0;
+    align-items:stretch;
+  }
+  .feat{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:12px;
+    padding:12px 14px;
+    min-height:88px;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .feat b{display:block;font-size:13px;margin-bottom:4px;color:#fff;line-height:1.2}
+  .feat span{font-size:12px;color:var(--muted);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .mono{background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px 14px;font-family:var(--font-mono);font-size:11px;color:#7DD3FC;margin:14px 0}
+  .inst-product > div:last-child{ margin-top:auto; }
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .grid-2,.inst-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
   .inst-grid-2{grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
@@ -110,7 +170,6 @@
 }
 
 @layer products{
-  /* Terminal universal - index + stark */
   #code-card{border-radius:20px;padding:24px;position:relative;overflow:hidden;box-shadow:var(--shadow-glow);animation:cardFloat 6s ease-in-out infinite,borderGlow 3s ease-in-out infinite;height:342px;display:flex;flex-direction:column}
   #terminal{font-family:var(--font-mono);font-size:13px;line-height:1.8;height:280px;display:flex;flex-direction:column}
   .terminal{background:#0a0a0f;border:1px solid rgba(168,85,247,.2);border-radius:16px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.5)}
@@ -121,7 +180,6 @@
   .progress-bar{width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--primary-2));transition:width .3s ease;margin-top:4px;border-radius:2px}
   .check{opacity:0;transform:translateX(-8px);transition:all .4s var(--ease)}
   .check.visible{opacity:1!important;transform:translateX(0);animation:checkPop .4s ease}
-  /* Stark chat */
   .chat-messages{max-height:400px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
   .chat-input-area{display:flex;gap:8px;margin-top:16px}
 }

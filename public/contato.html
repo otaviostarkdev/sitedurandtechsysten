@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato - DurandTechSysten</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.contact-hero{padding:60px 5%;text-align:center}
+.contact-hero h1{font-size:42px;color:#00ff66}
+.form-box{max-width:600px;margin:0 auto;background:#111611;border:1px solid #00ff6622;border-radius:18px;padding:28px}
+.form-box input,.form-box textarea,.form-box select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #222;background:#000;color:#fff;font-family:Inter, sans-serif}
+.form-box button{width:100%;background:#00ff66;color:#000;padding:14px;border-radius:10px;border:0;font-weight:800;cursor:pointer;font-size:16px;box-shadow:0 0 20px #00ff6666;transition:.2s}
+.form-box button:hover{transform:scale(1.02)}
+.info-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;max-width:800px;margin:30px auto;padding:0 5%}
+.info{ background:#0a0f0a; border:1px solid #00ff6615; border-radius:12px; padding:16px; text-align:center}
+.info span{color:#00ff66;font-weight:800}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo" style="text-decoration:none;color:#fff"><img src="assets/logo.jpg" style="width:38px;height:38px;border-radius:50%"> DurandTechSysten</a>
+  <nav><a href="index.html" style="color:#aaa;text-decoration:none;margin-right:14px">Início</a><a href="contato.html" style="color:#00ff66;text-decoration:none">Contato</a></nav>
+</header>
+
+<div class="contact-hero">
+  <h1>Fale com a gente</h1>
+  <p style="color:#888;margin-top:8px">Resposta rápida - sem formulário chato de PHP</p>
+</div>
+
+<div class="info-cards">
+  <div class="info"><span>📍 Pelotas - RS</span><br>Atendimento remoto Brasil todo</div>
+  <div class="info"><span>💬 WhatsApp</span><br>(53) 997073648</div>
+  <div class="info"><span>✉️ E-mail</span><br>contato@durandtechsysten.com</div>
+</div>
+
+<div class="form-box">
+  <input id="nome" placeholder="Seu nome" required>
+  <input id="email" type="email" placeholder="Seu e-mail">
+  <select id="servico">
+    <option>Quero um site em HTML/CSS/JS</option>
+    <option>Quero um Sistema</option>
+    <option>Quero uma automação</option>
+    <option>Outro</option>
+  </select>
+  <textarea id="msg" rows="5" placeholder="Me conta o que você precisa..."></textarea>
+  <button onclick="enviarZap()">Enviar no WhatsApp</button>
+  <p style="text-align:center;color:#555;font-size:12px;margin-top:10px">Sem PHP, sem banco. Vai direto pro seu WhatsApp.</p>
+</div>
+
+<footer style="text-align:center;padding:30px;color:#555;margin-top:40px">© 2026 DurandTechSysten - Bom e velho HTML</footer>
+
+<script>
+function enviarZap(){
+  const nome = document.getElementById('nome').value || 'Olá';
+  const email = document.getElementById('email').value;
+  const servico = document.getElementById('servico').value;
+  const msg = document.getElementById('msg').value;
+  if(!nome || !msg){ alert('Preenche nome e mensagem hehe'); return; }
+  const texto = `Olá DurandTechSysten!%0A%0A*Nome:* ${nome}%0A*E-mail:* ${email}%0A*Serviço:* ${servico}%0A*Mensagem:* ${msg}`;
+  const numero = '5553997073648'; // <-- TROCA AQUI PELO SEU NUMERO COM DDD
+  window.open(`https://wa.me/${numero}?text=${texto}`, '_blank');
+}
+</script>
+</body>
+</html>
