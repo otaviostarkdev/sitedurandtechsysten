@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Radar de Vagas - Para Todos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>tailwind.config={darkMode:'class'}</script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    body{font-family:'Inter',sans-serif}
+  </style>
+</head>
+<body class="bg-[#f1f5f9] dark:bg-[#0f172a] min-h-screen">
+<div class="max-w-6xl mx-auto px-4 py-6">
+  <header class="flex flex-wrap justify-between items-center gap-3 mb-6">
+    <div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white">💼 Radar de Vagas</h1>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Feito para ajudar quem precisa - busca geral, não só tecnologia</p>
+    </div>
+    <div class="flex gap-2">
+      <button id="btnDark" class="bg-white dark:bg-slate-800 border dark:border-slate-700 w-10 h-10 rounded-xl"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i></button>
+      <button id="btnFavTop" class="bg-white dark:bg-slate-800 border dark:border-slate-700 px-4 py-2 rounded-xl text-sm font-bold dark:text-white">❤️ <span id="favCount">0</span> Salvas</button>
+    </div>
+  </header>
+
+  <!-- BUSCA - LAYOUT CORRIGIDO SEM SOBREPOSIÇÃO -->
+  <div class="bg-white dark:bg-slate-800 rounded-[24px] shadow-sm border dark:border-slate-700 p-5 md:p-6 mb-4">
+    <!-- Linha 1: o que e onde -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-300">O QUE VOCÊ PROCURA?</label>
+        <input id="keyword" class="w-full mt-2 px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-900 dark:text-white text-[15px] outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: vendedor, auxiliar, motorista..." />
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button class="chip bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:text-white px-3 py-1.5 rounded-full text-xs transition" data-kw="auxiliar">Auxiliar</button>
+          <button class="chip bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:text-white px-3 py-1.5 rounded-full text-xs" data-kw="vendedor">Vendedor</button>
+          <button class="chip bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:text-white px-3 py-1.5 rounded-full text-xs" data-kw="atendente">Atendente</button>
+          <button class="chip bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:text-white px-3 py-1.5 rounded-full text-xs" data-kw="operador">Operador</button>
+          <button class="chip bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:text-white px-3 py-1.5 rounded-full text-xs" data-kw="motorista">Motorista</button>
+          <button class="chip bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:text-white px-3 py-1.5 rounded-full text-xs" data-kw="limpeza">Limpeza</button>
+          <button class="chip bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:text-white px-3 py-1.5 rounded-full text-xs" data-kw="estoque">Estoque</button>
+          <button class="chip bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:text-white px-3 py-1.5 rounded-full text-xs" data-kw="caixa">Caixa</button>
+          <button class="chip bg-amber-100 hover:bg-amber-200 text-amber-800 px-3 py-1.5 rounded-full text-xs font-bold" data-kw="">Ver todas</button>
+        </div>
+      </div>
+      <div>
+        <label class="text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-300">ONDE?</label>
+        <input id="city" value="" placeholder="Digite sua cidade ou deixe em branco para todo Brasil" class="w-full mt-2 px-4 py-3.5 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-900 dark:text-white text-[15px] outline-none focus:ring-2 focus:ring-blue-500" />
+        <div class="mt-3 grid grid-cols-2 gap-2">
+          <select id="modelo" class="px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-900 dark:text-white text-sm">
+            <option value="todos">Qualquer modelo</option><option value="presencial" selected>Presencial</option><option value="hibrido">Híbrido</option><option value="remoto">Remoto</option>
+          </select>
+          <select id="salario" class="px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 dark:bg-slate-900 dark:text-white text-sm">
+            <option value="0">Qualquer salário</option><option value="1500">A partir de R$1.500</option><option value="2000">A partir de R$2.000</option><option value="2500">A partir de R$2.500</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Linha 2: botões de ação - SEMPRE EM BAIXO, SEM SOBREPOR -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+      <button id="btnBuscar" class="md:col-span-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-3.5 rounded-xl text-[16px] transition"><i class="fa-solid fa-magnifying-glass mr-2"></i>Buscar vagas agora</button>
+      <div class="grid grid-cols-2 gap-3">
+        <button id="btnWpp" class="w-full bg-green-500 hover:bg-green-600 text-white py-3.5 rounded-xl text-sm font-bold transition"><i class="fa-brands fa-whatsapp mr-1"></i> Enviar no Zap</button>
+        <button id="btnEmail" class="w-full bg-slate-800 hover:bg-black dark:bg-white dark:text-black dark:hover:bg-slate-200 text-white py-3.5 rounded-xl text-sm font-bold transition"><i class="fa-solid fa-envelope mr-1"></i> E-mail</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="status" class="hidden mb-4 p-4 rounded-xl text-sm"></div>
+
+  <div class="flex gap-2 mb-4 overflow-x-auto text-xs pb-2">
+    <button data-filter="todos" class="filter-btn active whitespace-nowrap px-4 py-2 rounded-full bg-slate-800 text-white font-bold">Todas</button>
+    <button data-filter="favoritas" class="filter-btn whitespace-nowrap px-4 py-2 rounded-full bg-white dark:bg-slate-800 border dark:border-slate-700 dark:text-white">❤️ Salvas</button>
+    <button data-filter="Gupy" class="filter-btn whitespace-nowrap px-4 py-2 rounded-full bg-white dark:bg-slate-800 border dark:border-slate-700 dark:text-white">Gupy</button>
+    <button data-filter="Indeed" class="filter-btn whitespace-nowrap px-4 py-2 rounded-full bg-white dark:bg-slate-800 border dark:border-slate-700 dark:text-white">Indeed</button>
+    <button data-filter="InfoJobs" class="filter-btn whitespace-nowrap px-4 py-2 rounded-full bg-white dark:bg-slate-800 border dark:border-slate-700 dark:text-white">InfoJobs</button>
+  </div>
+
+  <div id="results" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+
+  <div class="mt-10 bg-blue-600 text-white rounded-2xl p-6 text-center">
+    <h3 class="font-bold text-lg">💡 Dica!</h3>
+    <p class="text-sm mt-2 opacity-90">Salve as vagas com ❤️, clique em "Enviar no Zap" e mande direto pra pessoa. Ela recebe os links prontos pra se candidatar, sem precisar procurar.</p>
+  </div>
+</div>
+
+<script type="module">
+const PROXIES=[u=>`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,u=>`https://corsproxy.io/?${encodeURIComponent(u)}`];
+async function fetchProxy(url){ for(let i=0;i<PROXIES.length;i++){ try{ const r=await fetch(PROXIES[i](url)); if(!r.ok) throw 0; return await r.text(); }catch{ await new Promise(s=>setTimeout(s,500*(i+1))) } } return null; }
+const LS='radar_geral_fav_v2';
+let favoritas=JSON.parse(localStorage.getItem(LS)||'[]');
+let todas=[]; let filtro='todos';
+
+function extrairSalario(t){ const m=(t||'').toLowerCase().match(/r\$\s*([\d\.]+)/); return m?parseInt(m[1].replace(/\./g,'')):0; }
+function normalizar(o){ const sal=extrairSalario(o.titulo+' '+o.descricao); return {id:btoa(o.link).slice(0,20), titulo:o.titulo, empresa:o.empresa||o.fonte, local:o.local||'Brasil', fonte:o.fonte, link:o.link, descricao:o.descricao||'', salario:sal, salarioTxt:sal?`R$ ${sal.toLocaleString('pt-BR')}`:''}; }
+
+async function buscarGupy(kw,city){
+  try{
+    let url=`https://portal.api.gupy.io/api/v1/jobs?search=${encodeURIComponent(kw||'')}&limit=30`;
+    if(city) url+=`&jobLocation=${encodeURIComponent(city)}`;
+    const raw=await fetchProxy(url); if(!raw) return [];
+    const j=JSON.parse(raw);
+    return (j.data||[]).map(x=>normalizar({titulo:x.name, empresa:x.companyName, local:x.jobLocation||city||'Brasil', fonte:'Gupy', link:x.jobUrl||`https://portal.gupy.io/job/${x.id}`, descricao:x.description||''}));
+  }catch{return []}
+}
+async function buscarIndeed(kw,city){
+  try{
+    const rss=`https://rss.indeed.com/rss?q=${encodeURIComponent(kw||'vagas')}${city?`&l=${encodeURIComponent(city)}`:''}`;
+    const raw=await fetchProxy(rss); if(!raw) return [];
+    const xml=new DOMParser().parseFromString(raw,'text/xml');
+    return Array.from(xml.querySelectorAll('item')).slice(0,20).map(it=>normalizar({titulo:it.querySelector('title')?.textContent||'Vaga', empresa:'Indeed', local:city||'Brasil', fonte:'Indeed', link:it.querySelector('link')?.textContent, descricao:it.querySelector('description')?.textContent||''}));
+  }catch{return []}
+}
+function buscarLinksGerais(kw,city){
+  const k=encodeURIComponent(kw||'vagas'); const c=encodeURIComponent(city||'Brasil');
+  return [
+    normalizar({titulo:`Ver vagas de "${kw||'geral'}" no LinkedIn - ${city||'Brasil'}`, empresa:'LinkedIn', local:city||'Brasil', fonte:'LinkedIn', link:`https://www.linkedin.com/jobs/search/?keywords=${k}&location=${c}`, descricao:'Clique para ver vagas gerais no LinkedIn, sem filtro de tecnologia.'}),
+    normalizar({titulo:`Vagas no InfoJobs - ${kw||''} em ${city||'Brasil'}`, empresa:'InfoJobs', local:city||'Brasil', fonte:'InfoJobs', link:`https://www.infojobs.com.br/empregos.aspx?palabra=${k}&lugar=${c}`, descricao:'InfoJobs tem muitas vagas presenciais de auxiliar, vendedor, operador, etc.'}),
+    normalizar({titulo:`Google Jobs - todas as vagas de ${kw||'geral'} em ${city||'Brasil'}`, empresa:'Google Jobs', local:city||'Brasil', fonte:'Google Jobs', link:`https://www.google.com/search?q=${k}+vagas+${c}&ibp=htl;jobs`, descricao:'O Google agrega vagas de Catho, InfoJobs, Gupy e Sine.'}),
+  ];
+}
+
+function filtrar(list){
+  const modelo=document.getElementById('modelo').value;
+  const salMin=parseInt(document.getElementById('salario').value)||0;
+  return list.filter(v=>{
+    const txt=(v.titulo+' '+v.descricao+' '+v.local).toLowerCase();
+    if(modelo==='remoto' && !txt.includes('remot') && v.local.toLowerCase()!=='remoto' && v.local!=='Brasil') return false;
+    if(modelo==='presencial' && txt.includes('remot')) return false;
+    if(salMin && v.salario && v.salario < salMin) return false;
+    return true;
+  });
+}
+function isFav(id){ return favoritas.some(f=>f.id===id); }
+function toggleFav(v){ if(isFav(v.id)) favoritas=favoritas.filter(f=>f.id!==v.id); else favoritas.push(v); localStorage.setItem(LS, JSON.stringify(favoritas)); updFav(); render(); }
+function updFav(){ document.getElementById('favCount').textContent=favoritas.length; }
+function render(){
+  const cont=document.getElementById('results');
+  let lista=filtro==='favoritas'?favoritas:todas;
+  if(filtro!=='favoritas' && filtro!=='todos') lista=todas.filter(v=>v.fonte===filtro || (filtro==='InfoJobs' && v.fonte.includes('Google')));
+  lista=filtrar(lista);
+  if(!lista.length){ cont.innerHTML=`<div class="col-span-3 text-center py-12 text-slate-500 dark:text-slate-400">Nenhuma vaga. Tente "auxiliar" ou clique em "Ver todas".</div>`; return; }
+  cont.innerHTML=lista.map(v=>`
+    <div class="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-2xl p-5 relative">
+      <button data-id="${v.id}" class="btnFav absolute top-3 right-3 w-9 h-9 rounded-full ${isFav(v.id)?'bg-red-100 text-red-600':'bg-slate-100 dark:bg-slate-700 text-slate-400'} flex items-center justify-center"><i class="fa-${isFav(v.id)?'solid':'regular'} fa-heart"></i></button>
+      <div class="flex gap-2 mb-2"><span class="text-[10px] font-bold px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 dark:text-white">${v.fonte}</span>${v.salarioTxt?`<span class="text-[10px] font-bold px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">${v.salarioTxt}</span>`:''}</div>
+      <h3 class="font-bold text-[15px] dark:text-white pr-8">${v.titulo}</h3>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">${v.empresa} • ${v.local}</p>
+      <p class="text-xs text-slate-400 mt-2 line-clamp-2">${(v.descricao||'').replace(/<[^>]*>/g,'').slice(0,150)}...</p>
+      <a href="${v.link}" target="_blank" class="mt-4 inline-flex bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full">Candidatar-se <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i></a>
+    </div>
+  `).join('');
+  cont.querySelectorAll('.btnFav').forEach(b=>b.addEventListener('click',()=>{ const v=[...todas,...favoritas].find(x=>x.id===b.dataset.id); if(v) toggleFav(v); }));
+}
+
+async function buscar(){
+  const kw=document.getElementById('keyword').value.trim();
+  const city=document.getElementById('city').value.trim();
+  const status=document.getElementById('status'); status.classList.remove('hidden'); status.className='mb-4 p-4 rounded-xl text-sm bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300';
+  status.innerHTML=`🔍 Buscando vagas de <b>${kw||'todas as áreas'}</b> ${city?`em <b>${city}</b>`:'no Brasil todo'}...`;
+  const btn=document.getElementById('btnBuscar'); btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin mr-2"></i>Buscando...';
+  try{
+    const [gupy, indeed]=await Promise.all([buscarGupy(kw,city), buscarIndeed(kw,city)]);
+    const gerais=buscarLinksGerais(kw,city);
+    todas=[...gupy, ...indeed, ...gerais];
+    if(!todas.length) throw new Error('vazio');
+    status.innerHTML=`✅ Encontramos <b>${todas.length}</b> vagas. Salve com ❤️ e envie no WhatsApp.`;
+    render();
+  }catch{
+    status.className='mb-4 p-4 rounded-xl text-sm bg-amber-50 border border-amber-200 text-amber-800';
+    status.innerHTML='⚠️ As APIs demoraram, mas deixamos os links diretos abaixo (InfoJobs, LinkedIn, Google Jobs) - clique para ver as vagas.';
+    todas=buscarLinksGerais(kw,city);
+    render();
+  }finally{ btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-magnifying-glass mr-2"></i>Buscar vagas agora'; }
+}
+
+function exportar(){ const lista=filtro==='favoritas'?favoritas:filtrar(todas); if(!lista.length) {alert('Salve algumas vagas com ❤️ primeiro'); return null;} return lista.map(v=>`• ${v.titulo} - ${v.empresa} (${v.local}) ${v.salarioTxt||''}\n${v.link}`).join('\n\n'); }
+document.getElementById('btnWpp').addEventListener('click',()=>{ const t=exportar(); if(!t) return; window.open(`https://wa.me/?text=${encodeURIComponent('💼 Olha essas vagas que encontrei pra você:\n\n'+t)}`,'_blank'); });
+document.getElementById('btnEmail').addEventListener('click',()=>{ const t=exportar(); if(!t) return; window.location.href=`mailto:?subject=${encodeURIComponent('Vagas encontradas')}&body=${encodeURIComponent(t)}`; });
+document.getElementById('btnDark').addEventListener('click',()=>{ document.documentElement.classList.toggle('dark'); localStorage.setItem('radar_dark', document.documentElement.classList.contains('dark')); });
+if(localStorage.getItem('radar_dark')==='true') document.documentElement.classList.add('dark');
+document.getElementById('btnBuscar').addEventListener('click', buscar);
+document.getElementById('btnFavTop').addEventListener('click',()=>{ filtro='favoritas'; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('bg-slate-800','text-white')); document.querySelector('[data-filter="favoritas"]').classList.add('bg-slate-800','text-white'); render(); });
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{ document.getElementById('keyword').value=c.dataset.kw; buscar(); }));
+document.querySelectorAll('.filter-btn').forEach(b=>b.addEventListener('click',e=>{ document.querySelectorAll('.filter-btn').forEach(x=>{x.classList.remove('bg-slate-800','text-white'); x.classList.add('bg-white','dark:bg-slate-800')}); e.target.classList.add('bg-slate-800','text-white'); filtro=e.target.dataset.filter; render(); }));
+document.getElementById('keyword').addEventListener('keydown',e=>{ if(e.key==='Enter') buscar(); });
+['modelo','salario'].forEach(id=>document.getElementById(id).addEventListener('change', render));
+updFav();
+</script>
+</body>
+</html>
