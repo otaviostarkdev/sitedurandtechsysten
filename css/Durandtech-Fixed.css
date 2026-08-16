@@ -187,15 +187,15 @@
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
     padding:12px 22px;border-radius:999px;
     font-size:13px;font-weight:700;text-decoration:none;
-    background:rgb(17, 163, 4);
-    border:1px solid rgb(22, 175, 9);color:#0a0a0a;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);color:#fff;
     transition:.25s var(--ease);
   }
-  .btn:hover{transform:translateY(-2px);border-color:rgba(255, 0, 13, 0.945);background:rgba(255, 0, 0, 0.979);color:var(--primary)}
+  .btn:hover{transform:translateY(-2px);border-color:rgba(0,255,136,.4);background:rgba(0,255,136,.1);color:var(--primary)}
   .btn-religiao{
     display:inline-flex;padding:12px 24px;border-radius:999px;
     background:var(--primary);color:#000;font-weight:800;font-size:13px;
-    text-decoration:none;box-shadow:0 0 30px rgb(255, 0, 0);
+    text-decoration:none;box-shadow:0 0 30px rgba(0,255,136,.3);
   }
   .centralizar{display:flex;justify-content:center;padding:32px 24px}
 }
