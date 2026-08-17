@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://durandtechsysten.com.br/sitemap.xml
