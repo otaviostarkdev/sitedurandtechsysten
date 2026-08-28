@@ -210,3 +210,21 @@
   .hero-logo{width:96px!important;height:96px!important}
   #servicos.grid,#downloads.grid{grid-template-columns:1fr;padding:16px}
 }
+
+footer {
+    display: flex;
+    flex-direction: column;   /* Empilha o texto de direitos autorais e os links */
+    align-items: center;      /* Centraliza tudo horizontalmente */
+    justify-content: center;  /* Centraliza verticalmente se houver altura fixa */
+    text-align: center;       /* Garante centralização do texto */
+    
+    font-size: 1.1rem;        /* Aumenta a fonte (ajuste conforme o gosto, ex: 18px ou 1.2rem) */
+    padding: 20px 0;          /* Adiciona um espaço interno em cima e embaixo */
+}
+
+/* Caso queira estilizar também os links de forma específica */
+footer a {
+    font-size: 1.1rem;        /* Mantém ou ajusta o tamanho dos links */
+    text-decoration: none;   /* Remove o sublinhado, se desejar */
+    margin: 4px 0;            /* Adiciona um leve espaçamento entre os links */
+}
