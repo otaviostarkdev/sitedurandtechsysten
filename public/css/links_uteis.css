@@ -1,0 +1,209 @@
+
+/* links_uteis.css - Landing isolada - não afeta o site principal */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.links-page {
+  background: #0f172a;
+  background-image: 
+    radial-gradient(at 20% 20%, rgba(0, 208, 132, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(56, 189, 248, 0.1) 0px, transparent 50%);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #fff;
+}
+
+.links-page .container {
+  width: 100%;
+  max-width: 440px;
+}
+
+.links-page .header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.links-page .logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #1e293b;
+  border: 2px solid #334155;
+  margin-bottom: 16px;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.links-page .header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.links-page .header p {
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.links-page .links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.links-page .link-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid #334155;
+  padding: 16px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.links-page .link-card:hover {
+  background: #1e293b;
+  border-color: #00d084;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(0, 208, 132, 0.2);
+}
+
+.links-page .link-card .icon {
+  font-size: 22px;
+  width: 44px;
+  height: 44px;
+  background: #0f172a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.links-page .link-card .text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.links-page .link-card .text strong {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.links-page .link-card .text small {
+  font-size: 12.5px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.links-page .link-card.featured {
+  background: linear-gradient(135deg, #1e293b 0%, #1a2e26 100%);
+  border-color: #00d084;
+}
+
+.links-page .link-card .badge {
+  margin-left: auto;
+  background: #00d084;
+  color: #0f172a;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.links-page .footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #1e293b;
+}
+
+.links-page .footer p {
+  font-size: 12px;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.links-page .footer a {
+  font-size: 13px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.links-page .footer a:hover {
+  color: #00d084;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .links-page {
+    padding: 24px 16px;
+  }
+  .links-page .header h1 {
+    font-size: 24px;
+  }
+}
+
+/* BOTÃO WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-2px);
+  background-color: #128C7E;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+}
+
+/* animação de pulso */
+.whatsapp-float::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #25D366;
+  z-index: -1;
+  animation: pulse-whats 2s infinite;
+}
+
+@keyframes pulse-whats {
+  0% { transform: scale(1); opacity: 0.7; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
