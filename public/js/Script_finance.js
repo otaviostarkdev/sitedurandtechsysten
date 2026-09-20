@@ -8801,7 +8801,7 @@ function Jo() {
             c('a', {
               href: '#checkout',
               className:
-                'h-9 px-5 rounded-full bg-[#1F3864] text-white text-[13px] font-semibold hover:bg-[#162a4d] transition-all shadow-[0_4px_16px_rgba(31,56,100,0.25)] flex items-center',
+                'h-9 px-5 rounded-full bg-[#1F3864] text-white text-[12px] font-semibold hover:bg-[#162a4d] transition-all shadow-[0_4px_16px_rgba(31,56,100,0.25)] flex items-center',
               children: 'Quero Minha Planilha por R$129,90',
             }),
           ],
@@ -8852,7 +8852,7 @@ function Jo() {
                       id: 'cta-principal',
                       href: '#checkout',
                       className:
-                        'h-[56px] px-8 rounded-full bg-[#548235] text-white font-bold text-[16px] flex items-center justify-center gap-2 shadow-[0_8px_24px_rgba(84,130,53,0.35)] hover:shadow-[0_12px_32px_rgba(84,130,53,0.45)] hover:-translate-y-[1px] active:translate-y-[0px] transition-all',
+                        'h-[60px] px-8 rounded-full bg-[#548235] text-white font-bold text-[16px] flex items-center justify-center gap-2 border-[5px] border-[#3E6D23] shadow-[0_8px_24px_rgba(84,130,53,0.35)] hover:shadow-[0_12px_32px_rgba(84,130,53,0.45)] hover:-translate-y-[1px] active:translate-y-[0px] transition-all',
                       children: [
                         'Quero minha planilha por R$129,90',
                         c('svg', {
@@ -9897,12 +9897,12 @@ function Jo() {
                       if (window.gtag) gtag('event', 'begin_checkout');
                     },
                     className:
-                      'mt-8 w-full h-[56px] rounded-full bg-[#548235] text-white font-extrabold text-[16px] flex items-center justify-center gap-2 shadow-[0_10px_28px_rgba(84,130,53,0.35)] hover:brightness-[1.05] hover:-translate-y-[1px] transition-all',
+                      'mt-8 w-full h-[56px] rounded-full bg-[#548235] text-white font-extrabold text-[16px] flex items-center justify-center gap-2 border-[5px] border-[#3E6D23] shadow-[0_10px_28px_rgba(84,130,53,0.35)] hover:brightness-[1.05] hover:-translate-y-[1px] transition-all',
                     children: [
                       'Quero minha planilha agora',
                       c('svg', {
-                        width: '18',
-                        height: '18',
+                        width: '17',
+                        height: '17',
                         viewBox: '0 0 20 20',
                         fill: 'none',
                         children: c('path', {
@@ -10320,12 +10320,12 @@ function openPixModal() {
             <div id="pix-copy-msg" style="margin-top:8px;font-size:11px;color:#10B981;font-weight:600;display:none;">✓ Código copiado!</div>
           </div>
 
-          <div style="margin-top:20px;background:#1F3864;border-radius:16px;padding:16px;color:white;text-align:left;">
+          <div style="margin-top:25px;background:#1F3864;border-radius:20px;padding:18px;color:white;text-align:left;">
             <div style="font-size:12px;font-weight:700;opacity:0.8;">APÓS PAGAR:</div>
-            <div style="margin-top:8px;font-size:13px;line-height:1.5;opacity:0.9;">1. Envie o comprovante no WhatsApp<br/>2. Receba a planilha em até 15 min<br/>3. Suporte incluso por 7 dias</div>
-                                    <a href="https://wa.me/5553991833588?text=Ol%C3%A1%20Ot%C3%A1vio%21%20Paguei%20a%20Planilha%20Financeira%20via%20PIX%20R%24129%2C90%20-%20segue%20comprovante" target="_blank" style="margin-top:12px;display:flex;height:44px;border-radius:9999px;background:white;color:#1F3864;font-weight:800;align-items:center;justify-content:center;text-decoration:none;border:1px solid #E2E8F0;">📩 Enviar comprovante p/ Otávio - (53) 99183-3588</a>
-            <a href="https://wa.me/5548984281856?text=Ol%C3%A1%20Juliana%21%20Paguei%20a%20Planilha%20Financeira%20via%20PIX%20R%24129%2C90%20-%20segue%20comprovante" target="_blank" style="margin-top:8px;display:flex;height:44px;border-radius:9999px;background:#1F3864;color:white;font-weight:700;font-size:13px;align-items:center;justify-content:center;text-decoration:none;">📩 Enviar comprovante p/ Juliana - (48) 98428-1856</a>
-            <div style="margin-top:12px;display:flex;gap:8px;">
+            <div style="margin-top:10px;font-size:12px;line-height:1.5;opacity:0.9;">1. Envie o comprovante no WhatsApp<br/>2. Receba a planilha em até 15 min<br/>3. Suporte incluso por 7 dias</div>
+                                    <a href="https://wa.me/5553991833588?text=Ol%C3%A1%20Ot%C3%A1vio%21%20Paguei%20a%20Planilha%20Financeira%20via%20PIX%20R%24129%2C90%20-%20segue%20comprovante" target="_blank" style="margin-top:18px;display:flex;height:55px;border-radius:9999px;background:white;color:#1F3864;font-weight:800;align-items:center;justify-content:center;text-decoration:none;border:1px solid #E2E8F0;">Enviar comprovante p/ Otávio</a>
+            <a href="https://wa.me/5548984281856?text=Ol%C3%A1%20Juliana%21%20Paguei%20a%20Planilha%20Financeira%20via%20PIX%20R%24129%2C90%20-%20segue%20comprovante" target="_blank" style="margin-top:8px;display:flex;height:44px;border-radius:9999px;background:#1F3864;color:white;font-weight:700;font-size:13px;align-items:center;justify-content:center;text-decoration:none;">Enviar comprovante p/ Juliana</a>
+            <div style="margin-top:15px;display:flex;gap:8px;">
               <a href="https://wa.me/5553991833588?text=Ol%C3%A1%20Ot%C3%A1vio%21%20Tenho%20d%C3%BAvidas%20sobre%20a%20Planilha" target="_blank" style="flex:1;height:38px;border-radius:9999px;background:#F8FAFC;border:1px solid #E2E8F0;color:#334155;font-weight:600;font-size:12px;display:flex;align-items:center;justify-content:center;text-decoration:none;">💬 Falar com Otávio</a>
               <a href="https://wa.me/5548984281856?text=Ol%C3%A1%20Juliana%21%20Tenho%20d%C3%BAvidas%20sobre%20a%20Planilha" target="_blank" style="flex:1;height:38px;border-radius:9999px;background:#F8FAFC;border:1px solid #E2E8F0;color:#334155;font-weight:600;font-size:12px;display:flex;align-items:center;justify-content:center;text-decoration:none;">💬 Falar com Juliana</a>
             </div>
