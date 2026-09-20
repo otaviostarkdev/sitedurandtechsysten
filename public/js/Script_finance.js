@@ -8791,6 +8791,11 @@ function Jo() {
                     'hidden sm:inline ml-2 text-[10px] font-semibold tracking-widest px-2 py-1 rounded-full bg-slate-100 text-slate-500 border',
                   children: '2026 EDITION',
                 }),
+                c('span', {
+                  className:
+                    'hidden md:inline ml-3 px-2.5 py-1 rounded-full border border-[#2E75B6]/20 bg-[#2E75B6]/5 text-[10px] font-semibold tracking-[0.08em] text-[#1F3864] uppercase',
+                  children: 'Será enviado pelo seu e-mail',
+                }),
               ],
             }),
             c('a', {
@@ -10228,6 +10233,11 @@ function Jo() {
                     c('div', {
                       className: 'text-center text-[11px] text-white/60',
                       children: 'De R$197 por R$129,90 • Acesso vitalício • Garantia 7 dias',
+                    }),
+                    c('div', {
+                      className:
+                        'mt-2 text-center text-[11px] font-semibold tracking-[0.08em] text-emerald-300 uppercase',
+                      children: 'Será enviado pelo seu e-mail',
                     }),
                   ],
                 }),
